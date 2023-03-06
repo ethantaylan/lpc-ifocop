@@ -8,10 +8,10 @@ import React, {
 
 export interface GlobalContext {
   darkMode: boolean;
-  textPrimary?: string;
-  textSecondary?: string;
-  textTertiary?: string;
-  textDarkGray?: string;
+  primary?: string;
+  secondary?: string;
+  tertiary?: string;
+  darkGray?: string;
   bgDarkGray?: string;
   regular?: string;
   semiBold?: string;
@@ -20,10 +20,10 @@ export interface GlobalContext {
 
 const initialState: GlobalContext = {
   darkMode: true,
-  textPrimary: "#025162",
-  textSecondary: "#EADFD8",
-  textTertiary: "#²E75313",
-  textDarkGray: "#414141",
+  primary: "#025162",
+  secondary: "#EADFD8",
+  tertiary: "#E75313",
+  darkGray: "#414141",
   bgDarkGray: "#E1E1E1",
   regular: "regular",
   semiBold: "semi-bold",
@@ -35,12 +35,12 @@ const reducer = (state: GlobalContext, action: any): GlobalContext => {
     case "DARK":
       return {
         darkMode: true,
-        textPrimary: "text-dark",
+        primary: "text-dark",
       };
     case "LIGHT":
       return {
         darkMode: false,
-        textPrimary: "text-white",
+        primary: "text-white",
       };
     default:
       return state;

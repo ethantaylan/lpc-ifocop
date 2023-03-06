@@ -25,3 +25,22 @@ body,
   cursor: pointer;
 }
 
+.primary {
+  color: #025162;
+}
+
+.secondary {
+  color: #eadfd8;
+}
+
+.tertiary {
+  color: #e75313;
+}
+
+.darkGray {
+  color: #414141;
+}
+
+.bgdarkgray {
+  color: #e1e1e1;
+}

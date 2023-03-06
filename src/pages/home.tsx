@@ -1,12 +1,14 @@
 import React from "react";
 import { Header } from "../components/header/header";
+import { Hero } from "../components/hero/hero";
 
 type Props = {};
 
-export const Home = (props: Props) => {
+export const Home: React.FC = (props: Props) => {
   return (
-    <div>
+    <React.Fragment>
       <Header />
-    </div>
+      <Hero />
+    </React.Fragment>
   );
 };

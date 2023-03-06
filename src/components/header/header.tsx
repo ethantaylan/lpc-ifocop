@@ -1,4 +1,5 @@
 import { BsHandbag, BsHeart, BsSearch } from "react-icons/bs";
+import { SubMenu } from "../sub-menu/sub-menu";
 
 interface Menus {
   title: string;
@@ -17,24 +18,18 @@ export const menus: Menus[] = [
   { title: "Options", url: "" },
 ];
 
-export const Header = () => (
+export const Header: React.FC = () => (
   <div className="p-5 d-flex w-100 flex-column text-dark">
     <div className="d-flex flex-row justify-content-between align-items-center">
       <span className="cursor-pointer">
         LE PETIT <span className="bold">COMMERCE</span>
       </span>
       <ul className="navbar-nav d-flex flex-row mr-auto">
-        <small>
-          <li className="nav-item nav-link pe-3 cursor-pointer">
-            +337 66 70 41 90
-          </li>
-        </small>
-        <small>
-          <li className="nav-item nav-link pe-3 cursor-pointer">Help</li>
-        </small>
-        <small>
-          <li className="nav-item nav-link pe-3 cursor-pointer">Compte</li>
-        </small>
+        <SubMenu
+          firstLabel="+331 42 25 64 78"
+          secondLabel="À propos"
+          thirdLabel="Help"
+        />
       </ul>
     </div>
     <div className="mt-5 d-flex w-100 justify-content-between">
@@ -73,25 +68,11 @@ export const Header = () => (
           </li>
         ))}
       </ul>
-      <ul className="navbar-nav d-flex flex-row mr-auto">
-        <small>
-          <li className="nav-item nav-link me-3 cursor-pointer">
-            <BsSearch />
-          </li>
-        </small>
-
-        <small>
-          <li className="nav-item nav-link mx-3 cursor-pointer">
-            <BsHeart />
-          </li>
-        </small>
-
-        <small>
-          <li className="nav-item nav-link mx-3 cursor-pointer">
-            <BsHandbag />
-          </li>
-        </small>
-      </ul>
+      <SubMenu
+        firstLabel={<BsSearch />}
+        secondLabel={<BsHeart />}
+        thirdLabel={<BsHandbag />}
+      />
     </div>
   </div>
 );
