@@ -3,6 +3,7 @@ import { Feedbacks } from "../components/feedbacks/feedbacks";
 import { Header } from "../components/header/header";
 import { Hero } from "../components/hero/hero";
 import { PopularProducts } from "../components/popular-products/popular-products";
+import { ProductSlider } from "../components/product-slider/product-slider";
 import { Title } from "../components/title/title";
 import { UnderHero } from "../components/under-hero/under-hero";
 
@@ -14,9 +15,9 @@ export const Home: React.FC = (props: Props) => {
       <Header />
       <Hero />
       <UnderHero />
-      <Feedbacks />
-      <Title title={"Nos produits populaires"} className={"my-5"} />
+      {/* <ProductSlider /> */}
       <PopularProducts />
+      <Feedbacks />
     </React.Fragment>
   );
 };

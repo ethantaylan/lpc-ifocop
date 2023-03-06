@@ -17,7 +17,7 @@ export const FeedbackCard: React.FC<FeedBackCardProps> = ({
   avatar,
 }) => {
   return (
-    <div className="m-4">
+    <div className="mb-4 w-100">
       <div className="card" style={{ width: "18rem;" }}>
         <div className="card-body">
           <div className="d-flex mb-3 align-items-center justify-content-between w-100">
