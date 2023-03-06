@@ -1,12 +1,12 @@
 import React from "react";
-import { Test } from "../components/_setupContext";
+import { Header } from "../components/header/header";
 
 type Props = {};
 
 export const Home = (props: Props) => {
   return (
     <div>
-      <Test />
+      <Header />
     </div>
   );
 };

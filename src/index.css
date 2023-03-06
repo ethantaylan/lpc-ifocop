@@ -1,7 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap");
+
 html,
 body,
 #root {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Manrope", sans-serif;
 }
+
+.regular {
+  font-weight: 400;
+}
+
+.semi-bold {
+  font-weight: 600;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+

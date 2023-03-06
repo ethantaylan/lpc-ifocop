@@ -1,7 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { useGlobalContext } from "./context/context";
-import { Home } from "./pages/Home";
-
+import { Home } from "./pages/home";
 
 export const App = () => {
   return (

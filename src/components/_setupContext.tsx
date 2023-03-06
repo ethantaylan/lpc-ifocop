@@ -1,10 +1,12 @@
 import React from "react";
 import { useGlobalContext, useGlobalDispatch } from "../context/context";
+import { Span } from "./span/span";
 
 type Props = {};
 
 export const Test = (props: Props) => {
-  const { darkMode } = useGlobalContext();
+  const { darkMode, textPrimary, textSecondary, textTertiary } =
+    useGlobalContext();
   const dispatch = useGlobalDispatch();
 
   const handleDarkMode = () => {
@@ -18,7 +20,9 @@ export const Test = (props: Props) => {
     }
   };
 
-  console.log(darkMode);
-
-  return <h1 onClick={handleDarkMode} style={{ color: darkMode ? "red" : "green" }}>Test</h1>;
+  return (
+    <h1 className={textPrimary} onClick={handleDarkMode}>
+      Test
+    </h1>
+  );
 };
