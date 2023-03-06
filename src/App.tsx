@@ -3,7 +3,7 @@ import { Home } from "./pages/home";
 
 export const App = () => {
   return (
-    <div className="App">
+    <div className="App container">
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Home />} />
       </Routes>

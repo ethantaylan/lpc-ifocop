@@ -1,5 +1,5 @@
 import { BsHandbag, BsHeart, BsSearch } from "react-icons/bs";
-import { SubMenu } from "../sub-menu/sub-menu";
+import { SubMenu } from "./sub-menu/sub-menu";
 
 interface Menus {
   title: string;
@@ -19,7 +19,7 @@ export const menus: Menus[] = [
 ];
 
 export const Header: React.FC = () => (
-  <div className="p-5 d-flex w-100 flex-column text-dark">
+  <div className="d-flex py-5 w-100 flex-column text-dark">
     <div className="d-flex flex-row justify-content-between align-items-center">
       <span className="cursor-pointer">
         LE PETIT <span className="bold">COMMERCE</span>
@@ -28,7 +28,7 @@ export const Header: React.FC = () => (
         <SubMenu
           firstLabel="+331 42 25 64 78"
           secondLabel="À propos"
-          thirdLabel="Help"
+          thirdLabel="Aide"
         />
       </ul>
     </div>

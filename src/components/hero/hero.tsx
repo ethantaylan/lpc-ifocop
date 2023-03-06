@@ -4,7 +4,7 @@ import { useGlobalContext } from "../../context/context";
 export const Hero = () => {
   const { secondary, primary } = useGlobalContext();
   return (
-    <div className="d-flex p-5">
+    <div className="d-flex">
       <div
         style={{ backgroundColor: secondary }}
         className="d-flex flex-column primary justify-content-center align-items-center w-100"
