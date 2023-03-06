@@ -59,7 +59,9 @@ export const Footer = () => {
           <span className="bold">{t.title}</span>
           <small>
             {t.links.map((link: FooterInformationsLinksProps) => (
-              <li className={`my-2 ${link.isImportant && 'bold'}`}>{link.title}</li>
+              <li className={`my-2 ${link.isImportant && "bold"}`}>
+                {link.title}
+              </li>
             ))}
           </small>
         </ul>
