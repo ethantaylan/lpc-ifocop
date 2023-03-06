@@ -4,8 +4,8 @@ import classNames from "classnames";
 interface SubMenuProps {
   className?: string;
   firstLabel: string | React.ReactElement;
-  secondLabel: string | React.ReactElement
-  thirdLabel: string | React.ReactElement
+  secondLabel: string | React.ReactElement;
+  thirdLabel: string | React.ReactElement;
 }
 
 const subMenuClasses = classNames(

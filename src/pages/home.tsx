@@ -1,5 +1,6 @@
 import React from "react";
 import { Feedbacks } from "../components/feedbacks/feedbacks";
+import { Footer } from "../components/footer/footer";
 import { Header } from "../components/header/header";
 import { Hero } from "../components/hero/hero";
 import { PopularProducts } from "../components/popular-products/popular-products";
