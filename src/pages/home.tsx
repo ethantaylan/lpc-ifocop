@@ -1,4 +1,5 @@
 import React from "react";
+import { Councils } from "../components/council/councils";
 import { Feedbacks } from "../components/feedbacks/feedbacks";
 import { Footer } from "../components/footer/footer";
 import { Header } from "../components/header/header";
@@ -13,11 +14,11 @@ type Props = {};
 export const Home: React.FC = (props: Props) => {
   return (
     <React.Fragment>
-      <Header />
       <Hero />
       <UnderHero />
+      <Councils />
       {/* <ProductSlider /> */}
-      <PopularProducts />
+      {/* <PopularProducts /> */}
       <Feedbacks />
     </React.Fragment>
   );

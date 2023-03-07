@@ -40,29 +40,24 @@ export const Feedbacks = () => {
 
   return (
     <React.Fragment>
-      <Title title={"Avis de nos clients"} className={"my-5"} />
-
       <div className="d-flex align-items-top justify-content-center">
-        <div className="w-100">
-          <img
-            width="100%"
-            style={{ borderRadius: "12px" }}
-            src={FeedbackImg}
-            alt=""
-          />
-        </div>
-        <div className="d-flex ms-4 mb-4 flex-column w-100">
-          {feedbacks.map((feedback: FeedBackCardProps, index: number) => (
-            <FeedbackCard
-              userName={feedback.userName}
-              key={index}
-              text={feedback.text}
-              date={feedback.date}
-              fiveStars={feedback.fiveStars}
-              avatar={index + 1}
-            />
-          ))}
-          <div className="mb-5 w-100 d-flex flex-column">
+        <div className="d-flex me-5 flex-column">
+          <Title title={"Avis de nos clients"} className={"my-5"} />
+
+          <div className="d-flex me-4 mb-4 flex-column w-100">
+            {feedbacks.map((feedback: FeedBackCardProps, index: number) => (
+              <FeedbackCard
+                userName={feedback.userName}
+                key={index}
+                text={feedback.text}
+                date={feedback.date}
+                fiveStars={feedback.fiveStars}
+                avatar={index + 1}
+              />
+            ))}
+          </div>
+
+          {/* <div className="mb-5 w-100 d-flex flex-column">
             <h5 className="primary">Laisser le votre !</h5>
             <div className="input-group mb-3">
               <div className="input-group-prepend">
@@ -89,7 +84,10 @@ export const Feedbacks = () => {
               placeholder="Votre message..."
               className="form-control"
             ></textarea>
-          </div>
+          </div> */}
+        </div>
+        <div className="w-100">
+          <img width="100%" src={FeedbackImg} alt="" />
         </div>
       </div>
     </React.Fragment>

@@ -24,17 +24,20 @@ export const FooterInformations: FooterInformationsProps[] = [
   {
     title: "Boutiques",
     links: [
-      { title: "Berlin", url: "url", isImportant: true },
-      { title: "Warranty", url: "url" },
-      { title: "Warranty", url: "url" },
+      { title: "Paris", url: "url", isImportant: true },
+      { title: "Montpellier", url: "url", isImportant: true },
+      { title: "Saint-Malo", url: "url", isImportant: true },
     ],
   },
   {
     title: "Aide",
     links: [
-      { title: "Support", url: "url" },
-      { title: "Support", url: "url" },
-      { title: "Support", url: "url" },
+      {
+        title: "hi@lepetitcommerce.com",
+        url: "mailto: hi@lepetitcommerce.com ",
+      },
+      { title: "+331 78 26 56 02", url: "url" },
+      { title: "", url: "url" },
       { title: "Support", url: "url" },
     ],
   },

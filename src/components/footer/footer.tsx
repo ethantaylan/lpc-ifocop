@@ -17,15 +17,15 @@ export const Footer = () => {
 
   return (
     <div
-      className="mt-5 d-flex justify-content-between secondary"
+      className="mt-5 mt d-flex justify-content-between secondary"
       style={{ backgroundColor: primary, padding: 70 }}
     >
       <div className="d-flex w-100 flex-column">
         <span className="mb-4 cursor-pointer">
           LE PETIT <span className="bold">COMMERCE</span>
         </span>
-        <small className="mb-2">About us</small>
-        <small className="mb-4">Contact</small>
+        <small className="mb-2 hover-underline cursor-pointer">About us</small>
+        <small className="mb-4 hover-underline cursor-pointer">Contact</small>
         <SubMenu
           firstLabel={
             <span
@@ -52,17 +52,24 @@ export const Footer = () => {
             </span>
           }
         />
-        <small className="mt-4">Made by @ethantaylan</small>
+        <small className="mt-4">Made by @ethantaylan with 💚</small>
       </div>
-      {FooterInformations.map((t: FooterInformationsProps) => (
-        <ul className="nav w-25 d-flex flex-column">
+      {FooterInformations.map((t: FooterInformationsProps, index: number) => (
+        <ul key={index} className="nav w-25 d-flex flex-column">
           <span className="bold">{t.title}</span>
           <small>
-            {t.links.map((link: FooterInformationsLinksProps) => (
-              <li className={`my-2 ${link.isImportant && "bold"}`}>
-                {link.title}
-              </li>
-            ))}
+            {t.links.map(
+              (link: FooterInformationsLinksProps, index: number) => (
+                <li
+                  key={index}
+                  className={`my-2 ${
+                    link.isImportant && "bold"
+                  } cursor-pointer hover-underline`}
+                >
+                  {link.title}
+                </li>
+              )
+            )}
           </small>
         </ul>
       ))}

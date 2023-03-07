@@ -1,5 +1,6 @@
 import React from "react";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import './feedback-card.scss'
 
 export interface FeedBackCardProps {
   avatar?: number;

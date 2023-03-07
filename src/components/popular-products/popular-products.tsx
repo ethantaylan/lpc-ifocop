@@ -61,12 +61,12 @@ export const PopularProducts: React.FC = () => {
           />
         ))}
         <div className="m-3 h-100 justify-content-end d-flex">
-          <button
+          <div
             style={{ backgroundColor: secondary, height: 200, width: 200 }}
-            className="tertiary btn px-4 py-2 semi-bold"
+            className="tertiary d-flex align-items-center px-4 py-2 semi-bold"
           >
             Voir tout les produits
-          </button>
+          </div>
         </div>
       </div>
     </React.Fragment>

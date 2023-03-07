@@ -17,7 +17,7 @@ export const PopularProductsCards: React.FC<ProductsProps> = ({
   return (
     <div className="d-flex m-3 flex-column">
       <img
-        style={{ objectFit: "cover", borderRadius: "7px" }}
+        style={{ objectFit: "cover" }}
         width={200}
         height={200}
         src={image}

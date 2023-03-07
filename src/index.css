@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap");
 
-
 html,
 body,
 #root {
@@ -44,4 +43,8 @@ body,
 
 .bgdarkgray {
   color: #e1e1e1;
+}
+
+.hover-underline:hover {
+  text-decoration: underline;
 }
