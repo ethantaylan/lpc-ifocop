@@ -1,8 +1,7 @@
-import Councils1 from "../../assets/Councils-1.jpg";
 import Councils2 from "../../assets/Councils-2.jpg";
 import { useGlobalContext } from "../../context/context";
 import { FaLeaf } from "react-icons/fa";
-import { BsArrowRightShort } from "react-icons/bs";
+
 
 export interface CuncilProps {}
 

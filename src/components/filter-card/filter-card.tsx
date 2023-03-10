@@ -23,7 +23,6 @@ export const FilterCard: React.FC<FilterCardProps> = ({
       style={{
         backgroundColor: isHovered ? theme.secondary : "transparent",
         color: theme.primary,
-        padding: "1rem",
         cursor: "pointer",
         transition: "0.3s",
       }}
