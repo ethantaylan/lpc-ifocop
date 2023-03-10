@@ -8,14 +8,14 @@ interface Menus {
 }
 
 export const menus: Menus[] = [
-  { title: "Accueil", url: "test" },
-  { title: "Nos Produits", url: "" },
-  { title: "Points de vente", url: "" },
-  { title: "Réservation", url: "" },
-  { title: "Avis", url: "" },
-  { title: "La boutique", url: "" },
-  { title: "Actualités", url: "" },
-  { title: "Options", url: "" },
+  { title: "Accueil", url: "/" },
+  { title: "Nos Produits", url: "/products" },
+  { title: "Points de vente", url: "/shops" },
+  { title: "Réservation", url: "/booking" },
+  { title: "Avis", url: "/feedbacks" },
+  { title: "La boutique", url: "/shop" },
+  { title: "Actualités", url: "/news" },
+  { title: "Options", url: "/options" },
 ];
 
 export const Header: React.FC = () => (

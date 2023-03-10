@@ -56,35 +56,6 @@ export const Feedbacks = () => {
               />
             ))}
           </div>
-
-          {/* <div className="mb-5 w-100 d-flex flex-column">
-            <h5 className="primary">Laisser le votre !</h5>
-            <div className="input-group mb-3">
-              <div className="input-group-prepend">
-                <span className="input-group-text" id="basic-addon1">
-                  @
-                </span>
-              </div>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Prénom, Nom"
-                aria-label="Username"
-                aria-describedby="basic-addon1"
-              />
-              <span className="input-group-text" id="basic-addon1">
-                <AiFillStar color="#F7EF00" />
-                <AiFillStar color="#F7EF00" />
-                <AiFillStar color="#F7EF00" />
-                <AiFillStar color="#F7EF00" />
-                <AiFillStar color="#F7EF00" />
-              </span>
-            </div>
-            <textarea
-              placeholder="Votre message..."
-              className="form-control"
-            ></textarea>
-          </div> */}
         </div>
         <div className="w-100">
           <img width="100%" src={FeedbackImg} alt="" />

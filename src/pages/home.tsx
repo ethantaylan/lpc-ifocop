@@ -17,8 +17,6 @@ export const Home: React.FC = (props: Props) => {
       <Hero />
       <UnderHero />
       <Councils />
-      {/* <ProductSlider /> */}
-      {/* <PopularProducts /> */}
       <Feedbacks />
     </React.Fragment>
   );
