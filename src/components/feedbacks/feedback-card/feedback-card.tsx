@@ -1,21 +1,21 @@
+import { Rating } from "@mui/material";
 import React from "react";
-import { AiFillStar, AiOutlineStar } from "react-icons/ai";
-import './feedback-card.scss'
+import "./feedback-card.scss";
 
 export interface FeedBackCardProps {
   avatar?: number;
   userName: string;
   text: string;
-  fiveStars?: boolean;
   date: string;
+  starValue: number;
 }
 
 export const FeedbackCard: React.FC<FeedBackCardProps> = ({
   text,
   userName,
-  fiveStars,
   date,
   avatar,
+  starValue,
 }) => {
   return (
     <div className="mb-4 w-100">
@@ -34,15 +34,13 @@ export const FeedbackCard: React.FC<FeedBackCardProps> = ({
             </div>
 
             <div className="d-flex">
-              <AiFillStar color="#F7EF00" />
-              <AiFillStar color="#F7EF00" />
-              <AiFillStar color="#F7EF00" />
-              <AiFillStar color="#F7EF00" />
-              {fiveStars ? (
-                <AiFillStar color="#F7EF00" />
-              ) : (
-                <AiOutlineStar color="darkgrey" />
-              )}
+              <Rating
+                size="small"
+                name="read-only"
+                className="my-1"
+                value={starValue}
+                readOnly
+              />
             </div>
           </div>
 

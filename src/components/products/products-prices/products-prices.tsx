@@ -1,21 +1,20 @@
-import React, { useState } from "react";
-import { Checkbox, CheckboxChangeEvent } from "primereact/checkbox";
 import { Form } from "react-bootstrap";
-import "./products-prices.scss";
+import { MuiSlider } from "../../mui-slider/mui-slider";
 import { Title } from "../../title/title";
+import "./products-prices.scss";
 
 export const ProductsPrices = () => {
-  const [ingredients, setIngredients] = useState<string[]>([]);
+  const ProductsPriceRange = ["0€ - 15€", "15€ - 30€", "30€ - 50€", "50€ + "];
 
   return (
-    <React.Fragment>
+    <div className="mt-5">
       <Title className="primary mb-4" h5 title={"Prix"} />
       <Form className="primary">
-        <Form.Check className="" id="" label="0€ - 15€" />
-        <Form.Check id="" label="15€ - 30€" />
-        <Form.Check id="" label="30€ - 50€" />
-        <Form.Check id="" label="50€ + " />
+        {ProductsPriceRange.map((range, index: number) => (
+          <Form.Check key={index} className="my-2" id="" label={range} />
+        ))}
       </Form>
-    </React.Fragment>
+      <MuiSlider />
+    </div>
   );
 };

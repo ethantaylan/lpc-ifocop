@@ -22,7 +22,7 @@ body,
 }
 
 .cursor-pointer {
-  cursor: pointer;
+  cursor: pointer !important;
 }
 
 .primary {
@@ -47,4 +47,8 @@ body,
 
 .hover-underline:hover {
   text-decoration: underline;
+}
+
+.primary2 {
+  --primary-color: #414141;
 }

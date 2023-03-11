@@ -1,8 +1,8 @@
 import React from "react";
 import { BsCaretDownFill, BsCaretUpFill } from "react-icons/bs";
 import { useGlobalContext } from "../../../context/context";
-import { FilterCard } from "../../filter-card/filter-card";
-import { Filter, filters } from "../../filter-card/filters";
+import { FilterCard } from "../../filters/filter-card/filter-card";
+import { Filter, filters } from "../../filters/filter-card/filters";
 import { Title } from "../../title/title";
 
 

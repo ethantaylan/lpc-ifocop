@@ -24,7 +24,7 @@ export const Title: React.FC<TitleProps> = ({
   span,
 }) => {
   return (
-    <React.Fragment>
+    <>
       {h1 && <h1 className={`bold ${className}`}>{title}</h1>}
       {h2 && <h2 className={`bold ${className}`}>{title}</h2>}
       {h3 && <h3 className={`bold ${className}`}>{title}</h3>}
@@ -32,6 +32,6 @@ export const Title: React.FC<TitleProps> = ({
       {h5 && <h5 className={`bold ${className}`}>{title}</h5>}
       {h6 && <h6 className={`bold ${className}`}>{title}</h6>}
       {span && <span className={`bold ${className}`}>{title}</span>}
-    </React.Fragment>
+    </>
   );
 };

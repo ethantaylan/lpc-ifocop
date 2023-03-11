@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useGlobalContext } from "../../context/context";
+import { useGlobalContext } from "../../../context/context";
 
 export interface FilterCardProps {
   filterLabel: string;
@@ -19,12 +19,13 @@ export const FilterCard: React.FC<FilterCardProps> = ({
   return (
     <div
       onClick={children && onClick}
-      className="w-100"
+      className="w-50  p-2"
       style={{
         backgroundColor: isHovered ? theme.secondary : "transparent",
         color: theme.primary,
         cursor: "pointer",
         transition: "0.3s",
+        borderRadius: 6
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}

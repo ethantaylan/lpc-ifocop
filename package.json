@@ -11,6 +11,9 @@
     "fastpush": "git add . && git commit -m '📌' && git push origin main"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@mui/material": "^5.11.12",
     "bootstrap": "^5.2.3",
     "primeicons": "^6.0.1",
     "primereact": "^9.2.0",
