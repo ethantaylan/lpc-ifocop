@@ -6,7 +6,7 @@ export const FilterTabs: React.FC = () => {
   const theme = useGlobalContext();
 
   return (
-    <>
+    <div className="d-flex">
       <Chip
         label="Deletable"
         onDelete={() => console.log("test")}
@@ -25,6 +25,6 @@ export const FilterTabs: React.FC = () => {
         style={{ backgroundColor: theme.secondary, color: theme.primary }}
         className="mx-2  semi-bold"
       />
-    </>
+    </div>
   );
 };

@@ -1,5 +1,6 @@
 import React from "react";
 import { FilterTabs } from "../filters/filter-tabs/filter-tabs";
+import { PopularProductsCards } from "../popular-products/popular-product-cards/popular-product-cards";
 import { Title } from "../title/title";
 import { ProductsLabels } from "./products-labels/products-labels";
 import { ProductsPrices } from "./products-prices/products-prices";
@@ -17,7 +18,23 @@ export const Products: React.FC = () => {
           <ProductsPrices />
           <ProductsRating />
         </div>
-        <FilterTabs />
+        <div className="ms-4 d-flex flex-column">
+          <FilterTabs />
+          <div className="d-flex flex-wrap">
+            <PopularProductsCards title={"test"} />
+            <PopularProductsCards title={"test"} />
+            <PopularProductsCards title={"test"} />
+            <PopularProductsCards title={"test"} />
+            <PopularProductsCards title={"test"} />
+            <PopularProductsCards title={"test"} />
+            <PopularProductsCards title={"test"} />
+            <PopularProductsCards title={"test"} />
+            <PopularProductsCards title={"test"} />
+            <PopularProductsCards title={"test"} />
+            <PopularProductsCards title={"test"} />
+            <PopularProductsCards title={"test"} />
+          </div>
+        </div>
       </div>
     </React.Fragment>
   );
