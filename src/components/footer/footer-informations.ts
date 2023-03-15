@@ -36,7 +36,7 @@ export const FooterInformations: FooterInformationsProps[] = [
         title: "hi@lepetitcommerce.com",
         url: "mailto: hi@lepetitcommerce.com ",
       },
-      { title: "+331 78 26 56 02", url: "url" },
+      { title: "+331 23 45 67 89", url: "url" },
       { title: "", url: "url" },
       { title: "Support", url: "url" },
     ],

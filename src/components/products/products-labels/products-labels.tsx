@@ -1,6 +1,7 @@
 import React from "react";
 import { BsCaretDownFill, BsCaretUpFill } from "react-icons/bs";
 import { useGlobalContext } from "../../../context/context";
+import { Breadcrumb } from "../../breadcrumb/breadcrumb";
 import { FilterCard } from "../../filters/filter-card/filter-card";
 import { Filter, filters } from "../../filters/filter-card/filters";
 import { Title } from "../../title/title";
@@ -14,6 +15,7 @@ export const ProductsLabels: React.FC = () => {
   return (
     <React.Fragment>
       {/* Filter Container */}
+      <Breadcrumb className="mb-5" />
       <Title className="primary mb-4" h5 title={"Filtres"} />
       <div>
         {filters.map((filter: Filter, index: number) => (

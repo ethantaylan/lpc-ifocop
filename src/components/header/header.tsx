@@ -1,22 +1,6 @@
 import { BsHandbag, BsHeart, BsSearch } from "react-icons/bs";
+import { menus } from "../../App";
 import { SubMenu } from "./sub-menu/sub-menu";
-
-interface Menus {
-  title: string;
-  url: string;
-  haveDropDown?: boolean;
-}
-
-export const menus: Menus[] = [
-  { title: "Accueil", url: "/" },
-  { title: "Nos Produits", url: "/products" },
-  { title: "Points de vente", url: "/shops" },
-  { title: "Réservation", url: "/booking" },
-  { title: "Avis", url: "/feedbacks" },
-  { title: "La boutique", url: "/shop" },
-  { title: "Actualités", url: "/news" },
-  { title: "Options", url: "/options" },
-];
 
 export const Header: React.FC = () => (
   <div className="d-flex py-5 w-100 flex-column text-dark">
@@ -26,7 +10,7 @@ export const Header: React.FC = () => (
       </span>
       <ul className="navbar-nav d-flex flex-row mr-auto">
         <SubMenu
-          firstLabel="+331 42 25 64 78"
+          firstLabel="+331 23 45 67 89"
           secondLabel="À propos"
           thirdLabel="Aide"
         />

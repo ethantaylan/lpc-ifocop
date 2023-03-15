@@ -41,8 +41,7 @@ export const Feedbacks = () => {
     <React.Fragment>
       <div className="d-flex align-items-top justify-content-center">
         <div className="d-flex me-5 flex-column">
-          <Title title={"Avis de nos clients"} className={"my-5"} />
-
+          <Title h1 title={"Avis de nos clients"} className={"my-5 primary text-center"} />
           <div className="d-flex me-4 mb-4 flex-column w-100">
             {feedbacks.map((feedback: FeedBackCardProps, index: number) => (
               <FeedbackCard
