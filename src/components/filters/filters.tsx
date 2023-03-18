@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { useGlobalContext } from "../../../context/context";
+import { useGlobalContext } from "../../context/context";
 
-export interface FilterCardProps {
-  filterLabel: string;
+export interface FiltersProps {
+  filter: string | null
   isAccessory?: boolean | null;
   children?: React.ReactElement;
   onClick?: () => void;
 }
 
-export const FilterCard: React.FC<FilterCardProps> = ({
-  filterLabel,
+export const Filters: React.FC<FiltersProps> = ({
+  filter,
   children,
   onClick,
 }) => {
@@ -18,8 +18,9 @@ export const FilterCard: React.FC<FilterCardProps> = ({
 
   return (
     <div
-      onClick={children && onClick}
+      onClick={onClick}
       className="w-100 p-2"
+      id="filter-container"
       style={{
         backgroundColor: isHovered ? theme.secondary : "transparent",
         color: theme.primary,
@@ -31,14 +32,13 @@ export const FilterCard: React.FC<FilterCardProps> = ({
       onMouseLeave={() => setIsHovered(false)}
     >
       <div
-        onClick={onClick}
         className="bold m-0 d-flex align-items-center"
         style={{ whiteSpace: "nowrap" }}
       >
-        <h6 className={`m-0 ${children && "semi-bold me-3"}`}>
-          {filterLabel}
-          <span className="ms-2">{children}</span>
+        <h6 id="filter" className={`m-0 ${children && "semi-bold me-3"}`}>
+          <>{filter}</>
         </h6>
+          <span className="ms-2">{children}</span>
       </div>
     </div>
   );

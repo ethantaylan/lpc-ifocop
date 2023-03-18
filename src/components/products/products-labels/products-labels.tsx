@@ -2,15 +2,15 @@ import React from "react";
 import { BsCaretDownFill, BsCaretUpFill } from "react-icons/bs";
 import { useGlobalContext } from "../../../context/context";
 import { Breadcrumb } from "../../breadcrumb/breadcrumb";
-import { FilterCard } from "../../filters/filter-card/filter-card";
+import { Filters } from "../../filters/filters";
 import { Title } from "../../title/title";
 
 interface ProductsLabelsProps {
-  filters: string[];
+  filters: any;
   onClick: any;
 }
 
-export const ProductsLabels: React.FC<ProductsLabelsProps> = ({
+export const FilterLabels: React.FC<ProductsLabelsProps> = ({
   filters,
   onClick,
 }) => {
@@ -27,31 +27,32 @@ export const ProductsLabels: React.FC<ProductsLabelsProps> = ({
           <React.Fragment key={index}>
             {filter.isAccessory && filter.label === "Accessoires" && (
               <div className="d-flex justify-content-between align-items-center">
-                <FilterCard
+                <Filters
                   onClick={() => {
                     setAccessories(!accessories);
                     onClick;
                   }}
-                  filterLabel={filter.label}
+                  filter={filter.label}
                 >
                   {!accessories ? <BsCaretDownFill /> : <BsCaretUpFill />}
-                </FilterCard>
+                </Filters>
               </div>
             )}
             {!filter.isAccessory && (
-              <FilterCard
+              <Filters
+                
                 onClick={onClick}
-                filterLabel={filter.label}
+                filter={filter.label}
                 isAccessory={filter.isAccessory || null}
               />
             )}
             {filter.isAccessory &&
               accessories &&
               filter.accessories?.map((accessory: any, index: number) => (
-                <FilterCard
+                <Filters
                   onClick={onClick}
                   key={index}
-                  filterLabel={accessory.label}
+                  filter={accessory.label}
                   isAccessory={true}
                 />
               ))}

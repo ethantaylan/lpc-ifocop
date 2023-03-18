@@ -3,19 +3,20 @@ import { useGlobalContext } from "../../../context/context";
 import "./filter-tab.scss";
 
 interface FilterTabProps {
-  label: any;
+  filter: string;
 }
 
-export const FilterTab: React.FC<FilterTabProps> = ({ label }) => {
+
+export const FilterTab: React.FC<FilterTabProps> = ({ filter }) => {
   const theme = useGlobalContext();
 
   return (
     <div className="d-flex">
       <Chip
-        label={label}
+        label={filter}
         onDelete={() => console.log("test")}
         style={{ backgroundColor: theme.secondary, color: theme.primary }}
-        className="mx-2  semi-bold"
+        className="mx-2 semi-bold"
       />
     </div>
   );

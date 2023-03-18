@@ -1,5 +1,5 @@
-export interface Filter {
-  label: string;
+export interface FilterProps {
+  label?: string;
   isAccessory?: boolean;
   accessories?: Accessory[];
 }
@@ -8,15 +8,16 @@ export interface Accessory {
   label: string;
 }
 
-export const filters: any = [
+export const filters: FilterProps[] = [
   {
     label: "T-shirts",
+     
   },
   {
     label: "Vestes",
   },
   {
-    label: "Meantaux",
+    label: "Manteaux",
   },
   {
     label: "Pulls",

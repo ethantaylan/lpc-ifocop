@@ -8,7 +8,7 @@ export interface ProductsProps {
   image?: string;
 }
 
-export const PopularProductsCards: React.FC<ProductsProps> = ({
+export const ProductsCards: React.FC<ProductsProps> = ({
   title,
   price,
   image,

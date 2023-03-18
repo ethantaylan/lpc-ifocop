@@ -1,7 +1,7 @@
 import {
   PopularProductsCards,
   ProductsProps,
-} from "./popular-product-cards/popular-product-cards";
+} from "./popular-product-cards/product-cards";
 import Product1 from "../../assets/products/1.jpg";
 import Product2 from "../../assets/products/2.jpg";
 import Product3 from "../../assets/products/3.jpg";
