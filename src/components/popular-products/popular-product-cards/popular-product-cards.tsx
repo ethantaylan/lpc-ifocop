@@ -24,7 +24,7 @@ export const PopularProductsCards: React.FC<ProductsProps> = ({
       ></img>
       <span className="bold mt-2">{title}</span>
       <small className="mb-3">{price}</small>
-      <p onClick={onClick} className="semi-bold tertiary">
+      <p onClick={onClick} className="semi-bold cursor-pointer tertiary">
         See details <BsArrowRightShort size={22} />
       </p>
     </div>

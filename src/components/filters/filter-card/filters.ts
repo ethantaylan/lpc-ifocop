@@ -8,7 +8,7 @@ export interface Accessory {
   label: string;
 }
 
-export const filters: Filter[] = [
+export const filters: any = [
   {
     label: "T-shirts",
   },

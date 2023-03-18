@@ -19,18 +19,19 @@ export const FilterCard: React.FC<FilterCardProps> = ({
   return (
     <div
       onClick={children && onClick}
-      className="w-50  p-2"
+      className="w-100 p-2"
       style={{
         backgroundColor: isHovered ? theme.secondary : "transparent",
         color: theme.primary,
         cursor: "pointer",
         transition: "0.3s",
-        borderRadius: 6
+        borderRadius: 6,
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       <div
+        onClick={onClick}
         className="bold m-0 d-flex align-items-center"
         style={{ whiteSpace: "nowrap" }}
       >
