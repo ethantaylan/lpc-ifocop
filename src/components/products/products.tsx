@@ -1,5 +1,7 @@
 import { createClient } from "pexels";
 import React from "react";
+import { getClothesPhotoFromPexels } from "../../core";
+import { useAxios } from "../../hooks/use-axios";
 import { FilterTab } from "../filters/filter-tab/filter-tab";
 import { Filter, filters } from "../filters/filters-array";
 import { ProductsCards } from "../popular-products/popular-product-cards/product-cards";
@@ -10,7 +12,11 @@ import { ProductsRating } from "./products-rating/products-rating";
 
 export const Products: React.FC = () => {
   const [selectedFilters, setSelectedFilters] = React.useState<Filter[]>([]);
+
+  const [urls, setUrls] = React.useState([]);
   const filterAnchorRef = React.useRef<NodeListOf<Element>>();
+
+  const getGlothesFetch = useAxios(getClothesPhotoFromPexels("animal"), true);
 
   React.useEffect(() => {
     filterAnchorRef.current = document.querySelectorAll("#filter-container");
@@ -42,17 +48,17 @@ export const Products: React.FC = () => {
     }
   };
 
-  const test: any = [];
+   const PhotoArray = getGlothesFetch.response?.photos[0]
 
-  const client = createClient(
-    "pwaz2r2geNBaUWDJCifZkb8hzfiLkC48taJmu0g3SivUFrHvHrcYwwku"
-  );
+   console.log(typeof PhotoArray)
 
-  client.photos.show({ id: 2014422 }).then((photo) => {
-    test.push(photo);
-  });
 
-  console.log(test);
+   for (let index = 0; index < urls.length; index++) {
+    const element = urls[index];
+    console.log(element)
+    
+   }
+
   return (
     <React.Fragment>
       <p className="text-center primary my-5">
@@ -62,7 +68,6 @@ export const Products: React.FC = () => {
       <div className="d-flex mt-5">
         <div className="d-flex w-25 flex-column">
           <FilterLabels onClick={undefined} filters={filters} />
-
           <ProductsPrices />
           <ProductsRating />
         </div>
