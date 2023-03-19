@@ -4,17 +4,24 @@ import "./filter-tab.scss";
 
 interface FilterTabProps {
   filter: string;
+  onDelete: () => void;
+  ref: any;
 }
 
-
-export const FilterTab: React.FC<FilterTabProps> = ({ filter }) => {
+export const FilterTab: React.FC<FilterTabProps> = ({
+  ref,
+  filter,
+  onDelete,
+}) => {
   const theme = useGlobalContext();
 
   return (
     <div className="d-flex">
       <Chip
+        ref={ref}
+        onDelete={onDelete}
+        id="filter"
         label={filter}
-        onDelete={() => console.log("test")}
         style={{ backgroundColor: theme.secondary, color: theme.primary }}
         className="mx-2 semi-bold"
       />

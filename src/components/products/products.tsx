@@ -1,6 +1,6 @@
 import React from "react";
 import { FilterTab } from "../filters/filter-tab/filter-tab";
-import { FilterProps, filters } from "../filters/filters-array";
+import { Filter, filters } from "../filters/filters-array";
 import { ProductsCards } from "../popular-products/popular-product-cards/product-cards";
 import { Title } from "../title/title";
 import { FilterLabels } from "./products-labels/products-labels";
@@ -8,29 +8,42 @@ import { ProductsPrices } from "./products-prices/products-prices";
 import { ProductsRating } from "./products-rating/products-rating";
 
 export const Products: React.FC = () => {
-  const [selectedFilters, setSelectedFilters] = React.useState<FilterProps[]>(
+  const [selectedFilters, setSelectedFilters] = React.useState<Filter[]>(
     []
   );
+  const filterAnchorRef = React.useRef<NodeListOf<Element>>();
 
   React.useEffect(() => {
-    const filterAnchor = document.querySelectorAll("#filter-container");
-  
+    filterAnchorRef.current = document.querySelectorAll("#filter-container");
+
     const handleClick = (event: any) => {
-      setSelectedFilters([...selectedFilters, event.target.textContent]);
+      const filter = event.target.textContent;
+      if (!selectedFilters.includes(filter)) {
+        setSelectedFilters([...selectedFilters, filter]);
+      }
     };
-  
-    filterAnchor.forEach((element: any) => {
+
+    filterAnchorRef.current.forEach((element: any) => {
       element.removeEventListener("click", handleClick);
       element.addEventListener("click", handleClick);
     });
-  
+
+    console.log(filterAnchorRef.current)
+
     return () => {
-      filterAnchor.forEach((element: any) => {
+      filterAnchorRef.current?.forEach((element: any) => {
         element.removeEventListener("click", handleClick);
       });
     };
-  }, [selectedFilters]);
-  
+  }, [selectedFilters, filterAnchorRef.current]);
+
+  const removeFilterHandler = (filter: Filter) => {
+    if (selectedFilters.includes(filter)) {
+      setSelectedFilters(
+        selectedFilters.filter((element: Filter) => element !== filter)
+      );
+    }
+  };
 
   return (
     <React.Fragment>
@@ -46,12 +59,18 @@ export const Products: React.FC = () => {
           <ProductsRating />
         </div>
         <div className="ms-4 d-flex flex-column">
-          {selectedFilters.map((filter: any, index: number) => (
-            <FilterTab  key={index} filter={filter} />
-          ))}
-
+          <div className="d-flex">
+            {selectedFilters.map((filter: any, index: number) => (
+              <FilterTab
+                ref={filterAnchorRef}
+                key={index}
+                filter={filter}
+                onDelete={() => removeFilterHandler(filter)}
+              />
+            ))}
+          </div>
           <div className="d-flex flex-wrap">
-            <ProductsCards title={"Pantalon"} />
+            <ProductsCards title={"Jeans"} />
           </div>
         </div>
       </div>

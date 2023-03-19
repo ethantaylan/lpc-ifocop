@@ -6,12 +6,14 @@ export interface FiltersProps {
   isAccessory?: boolean | null;
   children?: React.ReactElement;
   onClick?: () => void;
+  ref?: any
 }
 
 export const Filters: React.FC<FiltersProps> = ({
   filter,
   children,
   onClick,
+  ref,
 }) => {
   const theme = useGlobalContext();
   const [isHovered, setIsHovered] = useState(false);
@@ -21,6 +23,7 @@ export const Filters: React.FC<FiltersProps> = ({
       onClick={onClick}
       className="w-100 p-2"
       id="filter-container"
+      ref={ref}
       style={{
         backgroundColor: isHovered ? theme.secondary : "transparent",
         color: theme.primary,
@@ -36,7 +39,7 @@ export const Filters: React.FC<FiltersProps> = ({
         style={{ whiteSpace: "nowrap" }}
       >
         <h6 id="filter" className={`m-0 ${children && "semi-bold me-3"}`}>
-          <>{filter}</>
+          {filter}
         </h6>
           <span className="ms-2">{children}</span>
       </div>
