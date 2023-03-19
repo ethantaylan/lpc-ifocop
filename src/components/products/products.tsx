@@ -1,3 +1,4 @@
+import { createClient } from "pexels";
 import React from "react";
 import { FilterTab } from "../filters/filter-tab/filter-tab";
 import { Filter, filters } from "../filters/filters-array";
@@ -8,9 +9,7 @@ import { ProductsPrices } from "./products-prices/products-prices";
 import { ProductsRating } from "./products-rating/products-rating";
 
 export const Products: React.FC = () => {
-  const [selectedFilters, setSelectedFilters] = React.useState<Filter[]>(
-    []
-  );
+  const [selectedFilters, setSelectedFilters] = React.useState<Filter[]>([]);
   const filterAnchorRef = React.useRef<NodeListOf<Element>>();
 
   React.useEffect(() => {
@@ -28,8 +27,6 @@ export const Products: React.FC = () => {
       element.addEventListener("click", handleClick);
     });
 
-    console.log(filterAnchorRef.current)
-
     return () => {
       filterAnchorRef.current?.forEach((element: any) => {
         element.removeEventListener("click", handleClick);
@@ -45,6 +42,17 @@ export const Products: React.FC = () => {
     }
   };
 
+  const test: any = [];
+
+  const client = createClient(
+    "pwaz2r2geNBaUWDJCifZkb8hzfiLkC48taJmu0g3SivUFrHvHrcYwwku"
+  );
+
+  client.photos.show({ id: 2014422 }).then((photo) => {
+    test.push(photo);
+  });
+
+  console.log(test);
   return (
     <React.Fragment>
       <p className="text-center primary my-5">
