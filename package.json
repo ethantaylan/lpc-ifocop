@@ -8,7 +8,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "start": "npm run dev",
-    "fastpush": "git add . && git commit -m '📌' && git push origin main"
+    "fastpush": "git add . && git commit -m 'fastpush' && git push origin main"
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",
