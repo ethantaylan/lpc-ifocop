@@ -15,14 +15,27 @@ export const ProductsCards: React.FC<ProductsProps> = ({
   onClick,
 }) => {
   return (
-    <div className="d-flex m-3 flex-column">
+    <div
+      style={{ borderRadius: 8 }}
+      className="d-flex m-3 p-3 flex-column border"
+    >
       <img
-        style={{ objectFit: "cover" }}
+        style={{ objectFit: "cover", borderRadius: 8 }}
         width={200}
         height={200}
         src={image}
-      ></img>
-      <span className="bold mt-2">{title}</span>
+      />
+      <span
+        style={{
+          width: 150,
+          textOverflow: "ellipsis",
+          overflow: "hidden",
+          whiteSpace: "nowrap",
+        }}
+        className="bold mt-2"
+      >
+        {title}
+      </span>
       <small className="mb-3">{price}</small>
       <p onClick={onClick} className="semi-bold cursor-pointer tertiary">
         See details <BsArrowRightShort size={22} />

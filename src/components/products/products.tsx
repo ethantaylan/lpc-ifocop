@@ -13,10 +13,11 @@ import { ProductsRating } from "./products-rating/products-rating";
 export const Products: React.FC = () => {
   const [selectedFilters, setSelectedFilters] = React.useState<Filter[]>([]);
 
-  const [urls, setUrls] = React.useState([]);
+  const [jeans, setJeans] = React.useState([]);
+
   const filterAnchorRef = React.useRef<NodeListOf<Element>>();
 
-  const getGlothesFetch = useAxios(getClothesPhotoFromPexels("animal"), true);
+  const getJeansFetch = useAxios<any>(getClothesPhotoFromPexels("jeans"), true);
 
   React.useEffect(() => {
     filterAnchorRef.current = document.querySelectorAll("#filter-container");
@@ -48,16 +49,15 @@ export const Products: React.FC = () => {
     }
   };
 
-   const PhotoArray = getGlothesFetch.response?.photos[0]
-
-   console.log(typeof PhotoArray)
-
-
-   for (let index = 0; index < urls.length; index++) {
-    const element = urls[index];
-    console.log(element)
-    
-   }
+  React.useEffect(() => {
+    setJeans(
+      getJeansFetch.response?.photos.map((photo: any) => ({
+        src: photo.src.medium,
+        alt: photo.alt,
+      }))
+    );
+    // setJeansLabels(getJeansFetch?.response.)
+  }, [getJeansFetch.response]);
 
   return (
     <React.Fragment>
@@ -83,7 +83,8 @@ export const Products: React.FC = () => {
             ))}
           </div>
           <div className="d-flex flex-wrap">
-            <ProductsCards title={"Jeans"} />
+            {jeans &&
+              jeans.map((jean: any) => <ProductsCards image={jean.src} title={jean.alt} />)}
           </div>
         </div>
       </div>
