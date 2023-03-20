@@ -10,6 +10,7 @@ import { Options } from "./pages/options";
 import { Reservation } from "./pages/reservation";
 import React from "react";
 import { Actualites } from "./pages/actualites";
+import { MapContainer } from "react-leaflet";
 
 interface Menus {
   title: string;

@@ -1,36 +1,41 @@
-import React from "react";
-import GoogleMapReact from "google-map-react";
+import React, { useRef } from "react";
+import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
+import { StoresInformations } from "../stores-informations";
 
-export function NosPointsDeVentes({
-  text,
-}: {
-  text: any;
-  lat: number;
-  lng: number;
-}) {
-  return <div>{text}</div>;
+interface SimpleMapProps {
+  markerPosition: number[];
 }
-export default function SimpleMap() {
-  const defaultProps = {
-    center: {
-      lat: 47.142676,
-      lng: 2.371812,
-    },
-    zoom: 7,
-  };
+
+interface MarkerProps {
+  position: any;
+  adress: any;
+}
+
+const MarkersPositions: MarkerProps[] = StoresInformations.map((store) => ({
+  position: store.position,
+  adress: store.adress,
+}));
+
+export const SimpleMap: React.FC<SimpleMapProps> = () => {
+  const mapRef: any = useRef();
 
   return (
-    // Important! Always set the container height explicitly
-    <div style={{ height: "100vh" }}>
-      <GoogleMapReact
-      
-        yesIWantToUseGoogleMapApiInternals
-        bootstrapURLKeys={{ key: "" }}
-        defaultCenter={defaultProps.center}
-        defaultZoom={defaultProps.zoom}
-      >
-        <NosPointsDeVentes lat={59.955413} lng={30.337844} text="My Marker" />
-      </GoogleMapReact>
-    </div>
+    <MapContainer
+      ref={mapRef}
+      style={{ width: "100%", height: 600 }}
+      center={[47.073024, 2.434364]}
+      zoom={6}
+      scrollWheelZoom={false}
+    >
+      <TileLayer
+        attribution=""
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
+      {MarkersPositions.map((marker: MarkerProps) => (
+        <Marker position={marker.position}>
+          <Popup>{marker.adress}</Popup>
+        </Marker>
+      ))}
+    </MapContainer>
   );
-}
+};
