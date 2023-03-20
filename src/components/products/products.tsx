@@ -11,53 +11,44 @@ import { ProductsPrices } from "./products-prices/products-prices";
 import { ProductsRating } from "./products-rating/products-rating";
 
 export const Products: React.FC = () => {
-  const [selectedFilters, setSelectedFilters] = React.useState<Filter[]>([]);
-
-  const [jeans, setJeans] = React.useState([]);
+  const [products, setProducts] = React.useState([]);
+  const [filterForQuery, setFilterForQuery] = React.useState("asos");
 
   const filterAnchorRef = React.useRef<NodeListOf<Element>>();
 
-  const getJeansFetch = useAxios<any>(getClothesPhotoFromPexels("jeans"), true);
+  const getProductsFetch = useAxios<any>(
+    getClothesPhotoFromPexels(`${filterForQuery}`),
+    true
+  );
 
   React.useEffect(() => {
     filterAnchorRef.current = document.querySelectorAll("#filter-container");
 
     const handleClick = (event: any) => {
+
+      event.preventDefault();
       const filter = event.target.textContent;
-      if (!selectedFilters.includes(filter)) {
-        setSelectedFilters([...selectedFilters, filter]);
-      }
+      setFilterForQuery(filter);
+      getProductsFetch.executeFetch();
+
     };
 
     filterAnchorRef.current.forEach((element: any) => {
       element.removeEventListener("click", handleClick);
       element.addEventListener("click", handleClick);
     });
+  }, [filterForQuery, products]);
 
-    return () => {
-      filterAnchorRef.current?.forEach((element: any) => {
-        element.removeEventListener("click", handleClick);
-      });
-    };
-  }, [selectedFilters, filterAnchorRef.current]);
-
-  const removeFilterHandler = (filter: Filter) => {
-    if (selectedFilters.includes(filter)) {
-      setSelectedFilters(
-        selectedFilters.filter((element: Filter) => element !== filter)
-      );
-    }
-  };
+  console.log(filterForQuery);
 
   React.useEffect(() => {
-    setJeans(
-      getJeansFetch.response?.photos.map((photo: any) => ({
+    setProducts(
+      getProductsFetch.response?.photos.map((photo: any) => ({
         src: photo.src.medium,
         alt: photo.alt,
       }))
     );
-    // setJeansLabels(getJeansFetch?.response.)
-  }, [getJeansFetch.response]);
+  }, [getProductsFetch.response]);
 
   return (
     <React.Fragment>
@@ -72,19 +63,11 @@ export const Products: React.FC = () => {
           <ProductsRating />
         </div>
         <div className="ms-4 d-flex flex-column">
-          <div className="d-flex">
-            {selectedFilters.map((filter: any, index: number) => (
-              <FilterTab
-                ref={filterAnchorRef}
-                key={index}
-                filter={filter}
-                onDelete={() => removeFilterHandler(filter)}
-              />
-            ))}
-          </div>
           <div className="d-flex flex-wrap">
-            {jeans &&
-              jeans.map((jean: any) => <ProductsCards image={jean.src} title={jean.alt} />)}
+            {products &&
+              products.map((jean: any) => (
+                <ProductsCards image={jean.src} title={jean.alt} />
+              ))}
           </div>
         </div>
       </div>
