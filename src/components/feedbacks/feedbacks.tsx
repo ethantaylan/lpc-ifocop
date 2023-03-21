@@ -1,7 +1,6 @@
 import React from "react";
 import { Title } from "../title/title";
 import { FeedbackCard, FeedBackCardProps } from "./feedback-card/feedback-card";
-import FeedbackImg from "../../assets/feedback.jpg";
 
 export const Feedbacks = () => {
   const feedbacks: FeedBackCardProps[] = [
@@ -54,9 +53,6 @@ export const Feedbacks = () => {
               />
             ))}
           </div>
-        </div>
-        <div className="w-100">
-          <img width="100%" src={FeedbackImg} alt="" />
         </div>
       </div>
     </React.Fragment>
