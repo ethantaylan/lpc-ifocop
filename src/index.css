@@ -52,3 +52,7 @@ body,
 .primary2 {
   --primary-color: #414141;
 }
+
+.text-underline {
+  text-decoration: underline;
+}

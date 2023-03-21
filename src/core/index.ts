@@ -7,3 +7,12 @@ export const getClothesPhotoFromPexels = (query: string) => ({
     Authorization: "pwaz2r2geNBaUWDJCifZkb8hzfiLkC48taJmu0g3SivUFrHvHrcYwwku",
   },
 });
+
+export const getRandomUsers = (): AxiosRequestConfig => ({
+  url: "https://randomuser.me/api/",
+  params: {
+    results: "2",
+    
+  },
+  method: "GET",
+});
