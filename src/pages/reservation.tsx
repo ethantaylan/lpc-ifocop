@@ -1,21 +1,25 @@
 import React from "react";
 import { BookingBanner } from "../components/booking-banner/booking-banner";
 import { Title } from "../components/title/title";
-import PersonnalShopperImg from "../assets/personnal-shopper.jpg";
-import Avatar from "@mui/material/Avatar/Avatar";
-import { useAxios } from "../hooks/use-axios";
-import { getRandomUsers } from "../core";
-import { Users, UsersProps } from "../components/coachs";
+import { Users, UsersProps } from "../components/users";
+import { Button, TextField } from "@mui/material";
+import DatePicker from "../components/date-picker/date-picker";
+import BasicSelect from "../components/select/select";
+import { useGlobalContext } from "../context/context";
+import { PaymentSection } from "../components/payment-section/payment-section";
 
 type Props = {};
 
 export const Reservation = (props: Props) => {
+
+  const theme = useGlobalContext()
+
   return (
     <div>
       <BookingBanner />
       <div className="d-flex text-left flex-row w-100 my-5 justify-content-center">
-        <div className="d-flex flex-column w-100">
-          <p className="w-100 pe-4">
+        <div className="d-flex flex-column pe-5 w-100">
+          <p className="w-100 mb-5">
             <Title
               h6
               className="primary mb-4"
@@ -36,26 +40,39 @@ export const Reservation = (props: Props) => {
             coachs personnels shoppers{" "}
             <span className="bold">compétents et passionnés</span>.
           </p>
+          <div className="d-flex w-100">
+            {Users.map((user: UsersProps) => (
+              <div className="d-flex flex-column align-items-center w-100">
+                <img
+                  style={{
+                    width: 100,
+                    height: 140,
+                    objectFit: "cover",
+                    borderRadius: "7px"
+                  }}
+                  src={user.imgSrc}
+                  alt="User Avatars"
+                />
+                <span>{user.userName}</span>
+              </div>
+            ))}
+          </div>
         </div>
-        <div className="d-flex w-100">
-          {Users.map((user: UsersProps) => (
-            <div className="cursor-pointer d-flex w-100 flex-column align-items-center">
-              
-              <img
-                style={{
-                  width: 60,
-                  borderRadius: 100,
-                  height: 60,
-                  objectFit: "cover",
-                }}
-                src={user.imgSrc}
-                alt="User Avatars"
-              />
-              <strong>{user.userName}</strong>
+        <div className="cursor-pointer mb-5 d-flex flex-column w-100 flex-row">
+          <div className="d-flex flex-column w-100 justify-content-between">
+            <TextField className="my-3" label="Nom" />
+            <TextField className="my-3" label="Prénom" />
+            <div className="my-3 w-100">
+              <DatePicker />
             </div>
-          ))}
+            <BasicSelect />
+            <Button className="mt-5" style={{backgroundColor: theme.primary}} color="primary" variant="contained">Confirmer</Button>
+
+          </div>
         </div>
       </div>
+      <PaymentSection />
+
     </div>
   );
 };

@@ -5,24 +5,22 @@ type Props = {};
 
 export const BookingBanner = (props: Props) => {
   return (
-    <div className="w-100">
+    <div className="w-100 h-100">
       <img
         className=""
         style={{ objectFit: "cover" }}
-        height={450}
+        height={300}
         width="100%"
         src={BookingBannerImg}
         alt=""
       />
       <h1
-        className="bold m-0"
+        className="bold primary my-5 text-center m-0"
         style={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%)",
-          color: "white",
-          fontSize: "120px",
+          // position: "absolute",
+          // top: "50%",
+          // left: "50%",
+          // transform: "translate(-50%)",
         }}
       >
         Réservation
