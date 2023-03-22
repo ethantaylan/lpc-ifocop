@@ -18,15 +18,15 @@ export const FeedbackCard: React.FC<FeedBackCardProps> = ({
   starValue,
 }) => {
   return (
-    <div className="mb-4 w-100">
+    <div style={{width: 400}} className="m-4">
       <div className="card" style={{ width: "18rem;" }}>
-        <div className="card-body">
+        <div style={{height: 150, overflow: 'hidden', textOverflow: 'ellipsis',}} className="card-body">
           <div className="d-flex mb-3 align-items-center justify-content-between w-100">
             <div className="d-flex align-items-center ">
               <img
                 src={`https://mdbcdn.b-cdn.net/img/new/avatars/${avatar}.webp`}
                 className="rounded-circle me-2"
-                style={{ width: 30 }}
+                style={{ width: 40 }}
                 alt="Avatar"
               />
               <h6 className="m-0 text-secondary">{`@${userName}`}</h6>

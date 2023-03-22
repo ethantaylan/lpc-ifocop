@@ -27,6 +27,9 @@ export const FooterInformations: FooterInformationsProps[] = [
       { title: "Paris", url: "url", isImportant: true },
       { title: "Montpellier", url: "url", isImportant: true },
       { title: "Saint-Malo", url: "url", isImportant: true },
+      { title: "Saint-Barthélemy-d'Anjou", url: "url", isImportant: true },
+      { title: "Orléans", url: "url", isImportant: true },
+      { title: "Châlons-en-Champagne", url: "url", isImportant: true },
     ],
   },
   {

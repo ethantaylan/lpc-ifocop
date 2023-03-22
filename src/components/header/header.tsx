@@ -1,4 +1,5 @@
 import { BsHandbag, BsHeart, BsSearch } from "react-icons/bs";
+import { NavLink } from "react-router-dom";
 import { menus } from "../../App";
 import { SubMenu } from "./sub-menu/sub-menu";
 
@@ -24,17 +25,18 @@ export const Header: React.FC = () => (
             key={index}
             className={`nav-item me-3 ${menu.haveDropDown && "dropdown"}`}
           >
-            <a
-              className={`nav-link semi-bold ${
+            <NavLink
+              style={{ opacity: 0.6}}
+              className={`nav-link bold ${
                 menu.haveDropDown && " dropdown-toggle"
               }`}
-              href={menu.url ? menu.url : "#"}
+              to={menu.url ? menu.url : "#"}
               id={menu.haveDropDown && "navbarDropdown"}
               data-bs-toggle={menu.haveDropDown && "dropdown"}
               role={menu.haveDropDown && "button"}
             >
               {menu.title}
-            </a>
+            </NavLink>
             {menu.haveDropDown && (
               <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a className="dropdown-item" href="#">

@@ -13,7 +13,7 @@ export const Accueil: React.FC = (props: Props) => {
       <Hero />
       <UnderHero />
       <Councils />
-      <Feedbacks />
+      <Feedbacks forHomePage={true} />
       <PaymentSection />
     </React.Fragment>
   );
