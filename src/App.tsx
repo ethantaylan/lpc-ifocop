@@ -6,7 +6,6 @@ import { Accueil } from "./pages/accueil";
 import { LaBoutique } from "./pages/la-boutique";
 import { NosPointsDeVentes } from "./pages/nos-points-de-ventes";
 import { NosProduits } from "./pages/nos-produits";
-import { Options } from "./pages/options";
 import { Reservation } from "./pages/reservation";
 import React from "react";
 import { Actualites } from "./pages/actualites";
