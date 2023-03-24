@@ -2,6 +2,7 @@ import React from "react";
 import { BsChevronDown } from "react-icons/bs";
 import { MapContainer } from "react-leaflet";
 import { MapCards } from "../components/map-cards/map-cards";
+import { PaymentSection } from "../components/payment-section/payment-section";
 import { SimpleMap } from "../components/simple-map/simple-map";
 import { StoresInformations } from "../components/stores-informations";
 
@@ -64,6 +65,7 @@ export const NosPointsDeVentes = () => {
           </span>
         </p>
       </p>
+      <PaymentSection />
     </div>
   );
 };

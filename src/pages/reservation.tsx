@@ -10,9 +10,10 @@ import { PaymentSection } from "../components/payment-section/payment-section";
 
 type Props = {};
 
-export const Reservation = (props: Props) => {
+export const Reservation = () => {
+  const theme = useGlobalContext();
 
-  const theme = useGlobalContext()
+  const [hover, setHover] = React.useState<boolean>(false);
 
   return (
     <div>
@@ -41,14 +42,18 @@ export const Reservation = (props: Props) => {
             <span className="bold">compétents et passionnés</span>.
           </p>
           <div className="d-flex w-100">
-            {Users.map((user: UsersProps) => (
-              <div className="d-flex flex-column align-items-center w-100">
+            {Users.map((user: UsersProps, index: number) => (
+              <div className="d-flex cursor-pointer flex-column align-items-center w-100">
                 <img
+                  key={index}
+                  onMouseLeave={() => setHover(false)}
+                  onMouseEnter={() => setHover(true)}
                   style={{
                     width: 100,
                     height: 140,
                     objectFit: "cover",
-                    borderRadius: "7px"
+                    borderRadius: "7px",
+                    transform: hover ? "scale(1.1)" : "scale(1)",
                   }}
                   src={user.imgSrc}
                   alt="User Avatars"
@@ -66,13 +71,18 @@ export const Reservation = (props: Props) => {
               <DatePicker />
             </div>
             <BasicSelect />
-            <Button className="mt-5" style={{backgroundColor: theme.primary}} color="primary" variant="contained">Confirmer</Button>
-
+            <Button
+              className="mt-5"
+              style={{ backgroundColor: theme.primary }}
+              color="primary"
+              variant="contained"
+            >
+              Confirmer
+            </Button>
           </div>
         </div>
       </div>
       <PaymentSection />
-
     </div>
   );
 };

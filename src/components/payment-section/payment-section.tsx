@@ -5,8 +5,8 @@ import PaymentOptionsImg from "../../assets/payments-options.png";
 export const PaymentSection = () => {
   return (
     <>
-      <hr />
-      <div className="d-flex justify-content-between">
+      <hr className="d-flex my-5" />
+      <div className="d-flex w-100 justify-content-between">
         <ul className="navbar-nav d-flex flex-column mr-auto">
           <span className="bold mb-4 d-flex">Vue d'ensemble</span>
 

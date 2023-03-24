@@ -25,7 +25,6 @@ export const menus: Menus[] = [
   { title: "Avis", url: "/avis" },
   { title: "La boutique", url: "/la-boutique" },
   { title: "Actualités", url: "/actualites" },
-  { title: "Options", url: "/options" },
 ];
 
 export const App = () => {
@@ -39,7 +38,6 @@ export const App = () => {
           <Route path="/nos-points-de-ventes" element={<NosPointsDeVentes />} />
           <Route path="/avis" element={<Avis />} />
           <Route path="/la-boutique" element={<LaBoutique />} />
-          <Route path="/options" element={<Options />} />
           <Route path="/reservation" element={<Reservation />} />
           <Route path="/acutalites" element={<Actualites />} />
         </Routes>
