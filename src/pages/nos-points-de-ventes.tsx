@@ -10,6 +10,7 @@ export const NosPointsDeVentes = () => {
   const [markerPosition, setMarkerPosition] = React.useState<number[]>([
     51.505, -0.09,
   ]);
+  
 
   return (
     <div className="w-100 d-flex justify-content-center align-items-center flex-column">

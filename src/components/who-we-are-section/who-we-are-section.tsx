@@ -5,7 +5,7 @@ export const WhoWeAreSection = () => {
   return (
     <div className="d-flex flex-column w-100 justify-content-center">
       <Title h5 className="my-5" title="Qui somme nous ?" />
-      <div className="w-75 d-flex justify-content-center flex-column align-items-center">
+      <div className="w-100 d-flex justify-content-center flex-column align-items-center">
         <p>
           <span className="bold">
             {" "}

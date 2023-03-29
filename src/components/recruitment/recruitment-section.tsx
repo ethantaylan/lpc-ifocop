@@ -9,9 +9,7 @@ export const RecruitmentSection = (props: Props) => {
 
   return (
     <div>
-      <hr />
       <Title h5 className="my-5" title="Recrutement" />
-
       <p>
         <span className="bold">
           {" "}

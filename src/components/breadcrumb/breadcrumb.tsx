@@ -33,4 +33,3 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({ className }) => {
     </Breadcrumbs>
   );
 };
-

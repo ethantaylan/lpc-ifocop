@@ -8,6 +8,8 @@ export const ContactSection = () => {
 
   return (
     <React.Fragment>
+      <Title h5 className="my-5" title="Contact" />
+
       <div className="w-75">
         <div className="d-flex flex-column w-100 mt-5 justify-content-center">
           <div className="d-flex mb-4 w-100">
