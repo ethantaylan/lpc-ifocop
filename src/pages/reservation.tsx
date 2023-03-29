@@ -46,8 +46,6 @@ export const Reservation = () => {
               <div className="d-flex cursor-pointer flex-column align-items-center w-100">
                 <img
                   key={index}
-                  onMouseLeave={() => setHover(false)}
-                  onMouseEnter={() => setHover(true)}
                   style={{
                     width: 100,
                     height: 140,
