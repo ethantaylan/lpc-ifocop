@@ -58,11 +58,11 @@ export const LaBoutique: React.FC = () => {
           </Button>
         ))}
       </div>
-      {activeIndex === 0 && <ContactSection />}
-      {activeIndex === 1 && <RecruitmentSection />}
-      {activeIndex === 2 && <Evenements />}
-      {activeIndex === 3 && <Presse />}
-      <PaymentSection />
+
+        {activeIndex === 0 && <ContactSection />}
+        {activeIndex === 1 && <RecruitmentSection />}
+        {activeIndex === 2 && <Evenements />}
+        {activeIndex === 3 && <Presse />}
     </div>
   );
 };

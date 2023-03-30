@@ -8,12 +8,15 @@ import BasicSelect from "../components/select/select";
 import { useGlobalContext } from "../context/context";
 import { PaymentSection } from "../components/payment-section/payment-section";
 
-type Props = {};
-
-export const Reservation = () => {
+export const Reservation: React.FC = () => {
   const theme = useGlobalContext();
 
+  const [activeIndex, setActiveIndex] = React.useState<number>();
   const [hover, setHover] = React.useState<boolean>(false);
+
+  const handleHover = (index: number) => {
+    setActiveIndex(index);
+  };
 
   return (
     <div>
@@ -43,15 +46,23 @@ export const Reservation = () => {
           </p>
           <div className="d-flex w-100">
             {Users.map((user: UsersProps, index: number) => (
-              <div className="d-flex cursor-pointer flex-column align-items-center w-100">
+              <div
+                onMouseEnter={() => {
+                  handleHover(index);
+                }}
+                onMouseLeave={() => setActiveIndex(undefined)}
+                className="d-flex cursor-pointer flex-column align-items-center w-100"
+              >
                 <img
                   key={index}
                   style={{
+                    transition: '0.2s',
                     width: 100,
                     height: 140,
                     objectFit: "cover",
                     borderRadius: "7px",
-                    transform: hover ? "scale(1.1)" : "scale(1)",
+                    transform:
+                      activeIndex === index ? "scale(1.04)" : "scale(1.0)",
                   }}
                   src={user.imgSrc}
                   alt="User Avatars"
