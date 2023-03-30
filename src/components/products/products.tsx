@@ -4,7 +4,11 @@ import { getClothesPhotoFromPexels } from "../../core";
 import { useAxios } from "../../hooks/use-axios";
 import { FilterTab } from "../filters/filter-tab/filter-tab";
 import { Filter, filters } from "../filters/filters-array";
-import { ProductsCards } from "../popular-products/popular-product-cards/product-cards";
+import {
+  ProductsCards,
+  ProductsProps,
+} from "../popular-products/popular-product-cards/product-cards";
+import { ProductModal } from "../product-modal/product-modal";
 import { Title } from "../title/title";
 import { FilterLabels } from "./products-labels/products-labels";
 import { ProductsPrices } from "./products-prices/products-prices";
@@ -13,7 +17,7 @@ import { ProductsRating } from "./products-rating/products-rating";
 export const Products: React.FC = () => {
   const [products, setProducts] = React.useState([]);
   const [filterForQuery, setFilterForQuery] = React.useState("asos");
-
+  const [productImg, setProductImg] = React.useState();
   const filterAnchorRef = React.useRef<NodeListOf<Element>>();
 
   const getProductsFetch = useAxios<any>(
@@ -25,12 +29,10 @@ export const Products: React.FC = () => {
     filterAnchorRef.current = document.querySelectorAll("#filter-container");
 
     const handleClick = (event: any) => {
-
       event.preventDefault();
       const filter = event.target.textContent;
       setFilterForQuery(filter);
       getProductsFetch.executeFetch();
-
     };
 
     filterAnchorRef.current.forEach((element: any) => {
@@ -50,8 +52,19 @@ export const Products: React.FC = () => {
     );
   }, [getProductsFetch.response]);
 
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   return (
     <React.Fragment>
+      <ProductModal
+        onClose={() => handleClose()}
+        show={open}
+        title={'test'}
+        description={""}
+        img={productImg}
+      />
       <p className="text-center primary my-5">
         <Title h1 title={"Nos produits"} className="my-5" />
       </p>
@@ -66,7 +79,14 @@ export const Products: React.FC = () => {
           <div className="d-flex flex-wrap">
             {products &&
               products.map((jean: any) => (
-                <ProductsCards image={jean.src} title={jean.alt} />
+                <ProductsCards
+                  onClick={() => {
+                    handleOpen();
+                    setProductImg(jean.src);
+                  }}
+                  image={jean.src}
+                  title={jean.alt}
+                />
               ))}
           </div>
         </div>

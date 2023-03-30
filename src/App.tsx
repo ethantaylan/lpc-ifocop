@@ -7,7 +7,6 @@ import { LaBoutique } from "./pages/la-boutique";
 import { NosPointsDeVentes } from "./pages/nos-points-de-ventes";
 import { NosProduits } from "./pages/nos-produits";
 import { Reservation } from "./pages/reservation";
-import React from "react";
 import { Actualites } from "./pages/actualites";
 
 interface Menus {
@@ -27,8 +26,9 @@ export const menus: Menus[] = [
 ];
 
 export const App = () => {
+
   return (
-    <React.Fragment>
+    <div>
       <div className="App container mb-5">
         <Header />
         <Routes location={location} key={location.pathname}>
@@ -42,7 +42,7 @@ export const App = () => {
         </Routes>
       </div>
       <Footer />
-    </React.Fragment>
+    </div>
   );
 };
 
