@@ -4,21 +4,30 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { useGlobalContext } from "../../context/context";
+import { Badge, Chip } from "@mui/material";
 
 const style = {
   position: "absolute" as "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 1000,
   height: 400,
   bgcolor: "background.paper",
   boxShadow: 24,
   p: 4,
 };
 
+function circleStyle(bgcolor: string, isWhite?: boolean) {
+  return {
+    borderRadius: "100px",
+    backgroundColor: bgcolor,
+    height: "20px",
+    width: "20px",
+    border: isWhite ? "2px solid rgb(200,200,200)" : "",
+  };
+}
+
 export interface ProductsProps {
-  category: Categories[];
   colors: string[];
   size: string[];
   image: any;
@@ -26,12 +35,14 @@ export interface ProductsProps {
 
 export const Products: ProductsProps[] = [
   {
-    category: [""],
     colors: ["Red", "Blue", "Orange"],
     size: ["XS", "S", "M", "L", "XL", "XXL", "XXXL"],
     image: "",
   },
 ];
+
+export const Sizes = ["XS", "S", "M", "L", "XL", "XXL", "XXXL"];
+export const Circles = ["red", "beige", "white", "salmon", "maroon"];
 
 export interface ProductModalProps {
   show: boolean;
@@ -61,48 +72,54 @@ export const ProductModal: React.FC<ProductModalProps> = ({
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <div>
-        <Box sx={style}>
-          <div className="d-flex w-100 h-100">
+      <Box sx={style}>
+        <div className="d-flex justify-content-center align-items-center w-100 h-100">
+          <div className="me-5">
+            {" "}
             <img
-              width={"100%"}
-              height={"100%"}
-              style={{ objectFit: "contain", borderRadius: 8 }}
+              style={{ objectFit: "cover", borderRadius: 8 }}
               src={img}
             />
-            <div className="d-flex w-100 flex-column">
-              <Typography
-                className="w-100 primary"
-                id="modal-modal-title"
-                variant="h6"
-                component="h2"
-              >
-                {title}
-              </Typography>
-              <p>{price}</p>
-              <p>{subDescription}</p>
-              <small></small>
-              <div className="d-flex">
-                <strong>S M L XL 2XL </strong>
-              </div>
-              <div className="d-flex">
-                <span className="me-2">circle</span>
-                <span className="mx-2">circle</span>
-                <span className="mx-2">circle</span>
-              </div>
-              <span>quantity 1</span>
-              <div className="d-flex"> </div>
-              <small>share</small>
-              <Button
-                className="w-100"
-                style={{ backgroundColor: theme.primary, color: "white" }}
-              >
-                Ajouter au panier
-              </Button>{" "}
-            </div>
           </div>
-        </Box>
-      </div>
+
+          <div className="d-flex w-100 flex-column">
+            <Typography
+              className="w-100 b-5 m-2 primary"
+              id="modal-modal-title"
+              variant="h3"
+              component="h3"
+            >
+              {title}
+            </Typography>
+            <p>{price}</p>
+            <p>{subDescription}</p>
+            <div className="d-flex flex-wrap">
+              {Circles.map((circleColor: string, index: number) => (
+                <span
+                  key={index}
+                  style={circleStyle(circleColor, true)}
+                  className="m-2 cursor-pointer"
+                />
+              ))}
+            </div>
+            <div className="d-flex my-5 w-100 mb-5">
+              {Sizes.map((size: string, index: number) => (
+                <Chip
+                  key={index}
+                  className="cursor-pointer"
+                  label={size}
+                />
+              ))}
+            </div>
+            <Button
+              className="w-100"
+              style={{ backgroundColor: theme.primary, color: "white" }}
+            >
+              Ajouter au panier
+            </Button>{" "}
+          </div>
+        </div>
+      </Box>
     </Modal>
   );
 };

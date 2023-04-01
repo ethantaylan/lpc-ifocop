@@ -26,8 +26,8 @@ export const Header: React.FC = () => (
             className={`nav-item me-3 ${menu.haveDropDown && "dropdown"}`}
           >
             <NavLink
-              style={{ opacity: 0.6}}
-              className={`nav-link bold ${
+              style={{ opacity: 0.6 }}
+              className={`nav-link ${
                 menu.haveDropDown && " dropdown-toggle"
               }`}
               to={menu.url ? menu.url : "#"}

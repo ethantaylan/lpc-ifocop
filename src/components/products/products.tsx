@@ -61,9 +61,11 @@ export const Products: React.FC = () => {
       <ProductModal
         onClose={() => handleClose()}
         show={open}
-        title={'test'}
+        title={"test"}
         description={""}
         img={productImg}
+        price={""}
+        subDescription={""}
       />
       <p className="text-center primary my-5">
         <Title h1 title={"Nos produits"} className="my-5" />
