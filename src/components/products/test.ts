@@ -1,9 +1,5 @@
-export interface ProductsProps {
-  category: Categories[];
-  colors: string[];
-  size: string[];
-  image: any;
-}
+
+
 
 export type Categories = [
   "T-shirts",
@@ -20,12 +16,3 @@ export type Categories = [
   "Ceintures",
   "Sacs"
 ];
-
-// export const Products: ProductsProps[] = [
-//   {
-//     category: [é"],
-//     colors: ["Red", "Blue", "Orange"],
-//     size: ["XS", "S", "M", "L", "XL", "XXL", "XXXL"],
-//     image: "",
-//   },
-// ];

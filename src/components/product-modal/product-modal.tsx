@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
+import { useGlobalContext } from "../../context/context";
 
 const style = {
   position: "absolute" as "absolute",
@@ -16,12 +17,30 @@ const style = {
   p: 4,
 };
 
+export interface ProductsProps {
+  category: Categories[];
+  colors: string[];
+  size: string[];
+  image: any;
+}
+
+export const Products: ProductsProps[] = [
+  {
+    category: [""],
+    colors: ["Red", "Blue", "Orange"],
+    size: ["XS", "S", "M", "L", "XL", "XXL", "XXXL"],
+    image: "",
+  },
+];
+
 export interface ProductModalProps {
   show: boolean;
   onClose: () => void;
   title: string;
   description: string | undefined;
   img: any;
+  price: string;
+  subDescription: string;
 }
 
 export const ProductModal: React.FC<ProductModalProps> = ({
@@ -30,7 +49,11 @@ export const ProductModal: React.FC<ProductModalProps> = ({
   show,
   onClose,
   img,
+  price,
+  subDescription,
 }) => {
+  const theme = useGlobalContext();
+
   return (
     <Modal
       open={show}
@@ -49,16 +72,16 @@ export const ProductModal: React.FC<ProductModalProps> = ({
             />
             <div className="d-flex w-100 flex-column">
               <Typography
-                className="w-100"
+                className="w-100 primary"
                 id="modal-modal-title"
                 variant="h6"
                 component="h2"
               >
                 {title}
               </Typography>
-              <p>price</p>
-              <p>random desc</p>
-              <small>size</small>
+              <p>{price}</p>
+              <p>{subDescription}</p>
+              <small></small>
               <div className="d-flex">
                 <strong>S M L XL 2XL </strong>
               </div>
@@ -67,16 +90,17 @@ export const ProductModal: React.FC<ProductModalProps> = ({
                 <span className="mx-2">circle</span>
                 <span className="mx-2">circle</span>
               </div>
-              <span>quantity</span>
-              <button>add to cart</button>
-              <button>buy now</button>
+              <span>quantity 1</span>
+              <div className="d-flex"> </div>
               <small>share</small>
+              <Button
+                className="w-100"
+                style={{ backgroundColor: theme.primary, color: "white" }}
+              >
+                Ajouter au panier
+              </Button>{" "}
             </div>
           </div>
-
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            {description}
-          </Typography>
         </Box>
       </div>
     </Modal>
