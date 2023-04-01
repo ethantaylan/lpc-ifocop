@@ -6,16 +6,20 @@ import { Title } from "../../title/title";
 interface ProductsLabelsProps {
   filters: any;
   onClick: any;
+  fetchHommes: () => void;
+  fetchFemmes: () => void;
 }
 
 export const FilterLabels: React.FC<ProductsLabelsProps> = ({
   filters,
   onClick,
+  fetchHommes,
+  fetchFemmes,
 }) => {
 
   return (
     <React.Fragment>
-      <Breadcrumb className="mb-5" />
+      <Breadcrumb fetchFemmes={fetchFemmes} fetchHommes={fetchHommes} className="mb-5" />
       <Title className="primary mb-4" h5 title={"Filtres"} />
       <div>
         {filters.map((filter: string, index: number) => (

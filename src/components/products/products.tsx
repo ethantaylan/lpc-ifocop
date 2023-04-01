@@ -1,13 +1,6 @@
-import { createClient } from "pexels";
 import React from "react";
-import { getClothesPhotoFromPexels } from "../../core";
-import { useAxios } from "../../hooks/use-axios";
-import { FilterTab } from "../filters/filter-tab/filter-tab";
-import { Filter, filters } from "../filters/filters-array";
-import {
-  ProductsCards,
-  ProductsProps,
-} from "../popular-products/popular-product-cards/product-cards";
+import { filters } from "../filters/filters-array";
+import { ProductsCards } from "../popular-products/popular-product-cards/product-cards";
 import { ProductModal } from "../product-modal/product-modal";
 import { Title } from "../title/title";
 import { FilterLabels } from "./products-labels/products-labels";
@@ -16,55 +9,55 @@ import { ProductsRating } from "./products-rating/products-rating";
 
 export const Products: React.FC = () => {
   const [products, setProducts] = React.useState([]);
-  const [filterForQuery, setFilterForQuery] = React.useState("asos");
   const [productImg, setProductImg] = React.useState();
-  const filterAnchorRef = React.useRef<NodeListOf<Element>>();
-
-  const getProductsFetch = useAxios<any>(
-    getClothesPhotoFromPexels(`${filterForQuery}`),
-    true
+  const [productTitle, setProductTitle] = React.useState<string>("");
+  const [productDescription, setProductDescription] = React.useState<string>();
+  const [productPrice, setProductPrice] = React.useState<string>();
+  const [category, setCategory] = React.useState<string>(
+    "/category/men's clothing"
   );
 
   React.useEffect(() => {
-    filterAnchorRef.current = document.querySelectorAll("#filter-container");
-
-    const handleClick = (event: any) => {
-      event.preventDefault();
-      const filter = event.target.textContent;
-      setFilterForQuery(filter);
-      getProductsFetch.executeFetch();
-    };
-
-    filterAnchorRef.current.forEach((element: any) => {
-      element.removeEventListener("click", handleClick);
-      element.addEventListener("click", handleClick);
-    });
-  }, [filterForQuery, products]);
-
-  console.log(filterForQuery);
-
-  React.useEffect(() => {
-    setProducts(
-      getProductsFetch.response?.photos.map((photo: any) => ({
-        src: photo.src.medium,
-        alt: photo.alt,
-      }))
-    );
-  }, [getProductsFetch.response]);
+    setCategory(category);
+  }, [category]);
 
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  fetch("https://fakestoreapi.com/auth/login", {
+    method: "POST",
+    body: JSON.stringify({
+      username: "johnd",
+      password: "m38rmF$",
+    }),
+  })
+    .then((res) => res.json())
+    .then((json) => console.log(json));
+
+  const getJoe = () => {
+    fetch("https://fakestoreapi.com/users/1")
+      .then((res) => res.json())
+      .then((json) => console.log(json));
+  };
+
+  getJoe()
+
+  const handleFetchClothing = async (sexe: string) => {
+    await fetch(`https://fakestoreapi.com/products/category/${sexe}'s clothing`)
+      .then((response) => response.json())
+      .then((data) => setProducts(data));
+  };
 
   return (
     <React.Fragment>
       <ProductModal
         onClose={() => handleClose()}
         show={open}
-        title={"test"}
-        description={""}
+        title={productTitle}
+        description={productDescription}
         img={productImg}
-        price={""}
+        price={productPrice}
         subDescription={""}
       />
       <p className="text-center primary my-5">
@@ -73,21 +66,32 @@ export const Products: React.FC = () => {
 
       <div className="d-flex mt-5">
         <div className="d-flex w-25 flex-column">
-          <FilterLabels onClick={undefined} filters={filters} />
+          <FilterLabels
+            fetchHommes={() => handleFetchClothing("men")}
+            fetchFemmes={() => handleFetchClothing("women")}
+            onClick={undefined}
+            filters={filters}
+          />
           <ProductsPrices />
           <ProductsRating />
         </div>
         <div className="ms-4 d-flex flex-column">
-          <div className="d-flex flex-wrap">
+          <div className="d-flex w-100 flex-wrap">
             {products &&
-              products.map((jean: any) => (
+              products.map((product: any) => (
                 <ProductsCards
+                  price={`${product.price.toFixed(2)} €`}
                   onClick={() => {
                     handleOpen();
-                    setProductImg(jean.src);
+                    setProductImg(product.image);
+                    setProductTitle(product.title);
+                    setProductPrice(product.price);
+                    setProductDescription(product.description);
                   }}
-                  image={jean.src}
-                  title={jean.alt}
+                  image={product.image}
+                  title={product.title}
+                  rating={product.rating.rate}
+                  count={product.rating.count}
                 />
               ))}
           </div>

@@ -1,3 +1,4 @@
+import { Rating } from "@mui/material";
 import React from "react";
 import { BsArrowRightShort } from "react-icons/bs";
 
@@ -6,6 +7,8 @@ export interface ProductsProps {
   price?: string;
   onClick?: () => void;
   image?: string;
+  rating: number;
+  count: number;
 }
 
 export const ProductsCards: React.FC<ProductsProps> = ({
@@ -13,6 +16,8 @@ export const ProductsCards: React.FC<ProductsProps> = ({
   price,
   image,
   onClick,
+  rating,
+  count,
 }) => {
   return (
     <div
@@ -20,7 +25,7 @@ export const ProductsCards: React.FC<ProductsProps> = ({
       className="d-flex m-3 p-3 flex-column border"
     >
       <img
-        style={{ objectFit: "cover", borderRadius: 8 }}
+        style={{ objectFit: "contain", borderRadius: 8 }}
         width={200}
         height={200}
         src={image}
@@ -32,12 +37,16 @@ export const ProductsCards: React.FC<ProductsProps> = ({
           overflow: "hidden",
           whiteSpace: "nowrap",
         }}
-        className="bold mt-2"
+        className="bold mt-2 mb-2"
       >
         {title}
       </span>
-      <small className="mb-3">{price}</small>
-      <p onClick={onClick} className="semi-bold cursor-pointer tertiary">
+      <small style={{fontSize: 16}} className="mb-3">{price}</small>
+      <div className="d-flex mb-3 align-items-center">
+        <Rating size="small" readOnly value={rating} />
+        <small className="ms-1 text-secondary">({count})</small>
+      </div>
+      <p onClick={onClick} className="m-0 semi-bold cursor-pointer tertiary">
         See details <BsArrowRightShort size={22} />
       </p>
     </div>

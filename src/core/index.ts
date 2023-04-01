@@ -16,3 +16,7 @@ export const getRandomUsers = (): AxiosRequestConfig => ({
   },
   method: "GET",
 });
+
+export const getFakeStoreApi = (categories?: string): AxiosRequestConfig => ({
+  url: `https://fakestoreapi.com/products/${categories}`
+})

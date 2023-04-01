@@ -11,7 +11,6 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  height: 400,
   bgcolor: "background.paper",
   boxShadow: 24,
   p: 4,
@@ -50,7 +49,7 @@ export interface ProductModalProps {
   title: string;
   description: string | undefined;
   img: any;
-  price: string;
+  price: any;
   subDescription: string;
 }
 
@@ -73,24 +72,21 @@ export const ProductModal: React.FC<ProductModalProps> = ({
       aria-describedby="modal-modal-description"
     >
       <Box sx={style}>
-        <div className="d-flex justify-content-center align-items-center w-100 h-100">
+        <div className="d-flex justify-content-center align-items-center">
           <div className="me-5">
-            {" "}
-            <img
-              style={{ objectFit: "cover", borderRadius: 8 }}
-              src={img}
-            />
+            <img style={{ objectFit: "cover", borderRadius: 8, width: 200 }} src={img} />
           </div>
-
           <div className="d-flex w-100 flex-column">
             <Typography
               className="w-100 b-5 m-2 primary"
               id="modal-modal-title"
-              variant="h3"
-              component="h3"
+              variant="h5"
+              component="h5"
+              style={{ whiteSpace: "nowrap" }}
             >
               {title}
             </Typography>
+            <p>{description}</p>
             <p>{price}</p>
             <p>{subDescription}</p>
             <div className="d-flex flex-wrap">
@@ -104,11 +100,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({
             </div>
             <div className="d-flex my-5 w-100 mb-5">
               {Sizes.map((size: string, index: number) => (
-                <Chip
-                  key={index}
-                  className="cursor-pointer"
-                  label={size}
-                />
+                <Chip key={index} className="cursor-pointer m-2" label={size} />
               ))}
             </div>
             <Button
@@ -116,7 +108,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({
               style={{ backgroundColor: theme.primary, color: "white" }}
             >
               Ajouter au panier
-            </Button>{" "}
+            </Button>
           </div>
         </div>
       </Box>

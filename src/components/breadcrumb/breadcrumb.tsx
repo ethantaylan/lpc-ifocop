@@ -3,9 +3,15 @@ import Breadcrumbs from "@mui/material/Breadcrumbs";
 
 interface BreadcrumbProps {
   className?: string;
+  fetchHommes: () => void;
+  fetchFemmes: () => void;
 }
 
-export const Breadcrumb: React.FC<BreadcrumbProps> = ({ className }) => {
+export const Breadcrumb: React.FC<BreadcrumbProps> = ({
+  className,
+  fetchHommes,
+  fetchFemmes,
+}) => {
   const [activeIndex, setActiveIndex] = React.useState<number>(0);
 
   const handleClick = (index: number) => {
@@ -19,13 +25,19 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({ className }) => {
       aria-label="breadcrumb"
     >
       <span
-        onClick={() => handleClick(0)}
+        onClick={() => {
+          handleClick(0);
+          fetchHommes();
+        }}
         className={` ${activeIndex === 0 && "primary bold"} cursor-pointer`}
       >
         Homme
       </span>
       <span
-        onClick={() => handleClick(1)}
+        onClick={() => {
+          handleClick(1);
+          fetchFemmes();
+        }}
         className={` ${activeIndex === 1 && "primary bold"} cursor-pointer`}
       >
         Femme
