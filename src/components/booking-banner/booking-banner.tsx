@@ -1,5 +1,5 @@
 import React from "react";
-import BookingBannerImg from "../../assets/Councils-3.jpeg";
+import BookingBannerImg from "../../assets/councils-3.jpeg";
 
 type Props = {};
 
