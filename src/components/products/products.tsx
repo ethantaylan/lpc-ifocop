@@ -1,7 +1,7 @@
 import React from "react";
 import { filters } from "../filters/filters-array";
 import { ProductsCards } from "../popular-products/popular-product-cards/product-cards";
-import { ProductModal } from "../product-modal/product-modal";
+import { ProductModal } from "./product-modal/product-modal";
 import { Title } from "../title/title";
 import { FilterLabels } from "./products-labels/products-labels";
 import { ProductsPrices } from "./products-prices/products-prices";
@@ -25,29 +25,19 @@ export const Products: React.FC = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  fetch("https://fakestoreapi.com/auth/login", {
-    method: "POST",
-    body: JSON.stringify({
-      username: "johnd",
-      password: "m38rmF$",
-    }),
-  })
-    .then((res) => res.json())
-    .then((json) => console.log(json));
-
-  const getJoe = () => {
-    fetch("https://fakestoreapi.com/users/1")
-      .then((res) => res.json())
-      .then((json) => console.log(json));
-  };
-
-  getJoe()
+  // fetch("https://fakestoreapi.com/carts/5")
+  //   .then((res) => res.json())
+  //   .then((json) => console.log(json));
 
   const handleFetchClothing = async (sexe: string) => {
     await fetch(`https://fakestoreapi.com/products/category/${sexe}'s clothing`)
       .then((response) => response.json())
       .then((data) => setProducts(data));
   };
+
+  React.useEffect(() => {
+    handleFetchClothing("men");
+  }, []);
 
   return (
     <React.Fragment>
@@ -75,6 +65,7 @@ export const Products: React.FC = () => {
           <ProductsPrices />
           <ProductsRating />
         </div>
+        <div className="d-flex"></div>
         <div className="ms-4 d-flex flex-column">
           <div className="d-flex w-100 flex-wrap">
             {products &&
@@ -92,6 +83,7 @@ export const Products: React.FC = () => {
                   title={product.title}
                   rating={product.rating.rate}
                   count={product.rating.count}
+                  withRating={true}
                 />
               ))}
           </div>

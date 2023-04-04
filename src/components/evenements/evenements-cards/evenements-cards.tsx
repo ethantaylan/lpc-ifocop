@@ -8,10 +8,11 @@ export interface EvenementCardsProps {
   description: string;
   img: any;
   title: string;
-  className: string;
+  className?: string;
   moreInfos: string;
   showMoreInfos: boolean;
   objectPosition?: string;
+  withoutButton?: boolean;
 }
 
 export const EvenementCards: React.FC<EvenementCardsProps> = ({
@@ -24,33 +25,38 @@ export const EvenementCards: React.FC<EvenementCardsProps> = ({
   moreInfos,
   showMoreInfos,
   objectPosition,
+  withoutButton,
 }) => {
   const theme = useGlobalContext();
 
   return (
-    <Card className={className} style={{ width: "75%", height: "100%" }}>
+    <Card className={className}>
       <img
         src={img}
         alt="Images des évenements"
         width={"100%"}
-        height={400}
+        height={300}
         style={{ objectFit: "cover", objectPosition: objectPosition }}
       />
 
       <Card.Body>
         <Card.Title className="bold">{title}</Card.Title>
-        <Card.Text>{description}</Card.Text>
+        <Card.Text style={{ height: 220 }}>
+          {description}
+        </Card.Text>
         {showMoreInfos && <p>{moreInfos}</p>}
 
-        <Button
-          onClick={onClick}
-          className="text-white"
-          style={{ backgroundColor: theme.primary }}
-          color="primary"
-          variant="contained"
-        >
-          {label}
-        </Button>
+        {withoutButton && (
+          <Button
+            onClick={onClick}
+            className="text-white"
+            style={{ backgroundColor: theme.primary }}
+            color="primary"
+            variant="contained"
+          >
+            {label}
+          </Button>
+        )}
       </Card.Body>
     </Card>
   );

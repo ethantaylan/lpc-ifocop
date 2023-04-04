@@ -8,6 +8,9 @@ import { NosPointsDeVentes } from "./pages/nos-points-de-ventes";
 import { NosProduits } from "./pages/nos-produits";
 import { Reservation } from "./pages/reservation";
 import { Actualites } from "./pages/actualites";
+import { AxiosRequestConfig } from "axios";
+import { useAxios } from "./hooks/use-axios";
+import React from "react";
 
 interface Menus {
   title: string;
@@ -26,7 +29,6 @@ export const menus: Menus[] = [
 ];
 
 export const App = () => {
-
   return (
     <div>
       <div className="App container mb-5">
@@ -38,7 +40,7 @@ export const App = () => {
           <Route path="/avis" element={<Avis />} />
           <Route path="/la-boutique" element={<LaBoutique />} />
           <Route path="/reservation" element={<Reservation />} />
-          <Route path="/acutalites" element={<Actualites />} />
+          <Route path="/actualites" element={<Actualites />} />
         </Routes>
       </div>
       <Footer />

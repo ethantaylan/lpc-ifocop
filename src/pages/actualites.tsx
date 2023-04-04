@@ -1,9 +1,13 @@
-import React from 'react'
+import { PaymentSection } from "../components/payment-section/payment-section";
 
-type Props = {}
-
-export const Actualites = (props: Props) => {
+export const Actualites = () => {
   return (
-    <div>Actualites</div>
-  )
-}
+    <div>
+      <h1>L'overview des actualités</h1>
+      <h3>Recrutements</h3>
+      <h3>Évenements à venir</h3>
+      <h3>Presse</h3>
+      <PaymentSection />
+    </div>
+  );
+};

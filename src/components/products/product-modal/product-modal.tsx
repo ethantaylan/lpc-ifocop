@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import { useGlobalContext } from "../../context/context";
+import { useGlobalContext } from "../../../context/context";
 import { Badge, Chip } from "@mui/material";
 
 const style = {

@@ -33,7 +33,7 @@ const Events: EventsProps[] = [
     index: 1,
   },
   {
-    title: "Présentation du petit Commerce",
+    title: "Black Friday",
     img: Event3,
     description:
       "La semaine dernière, notre boutique de vêtements a organisé un événement exceptionnel à l'occasion du Black Friday. Les clients ont eu la chance de bénéficier de réductions incroyables sur une large sélection de nos produits.",
@@ -60,11 +60,12 @@ export const Evenements: React.FC = () => {
           description={event.description}
           img={event.img}
           title={event.title}
-          className={"m-3"}
+          className={"m-3 w-25"}
           moreInfos={event.moreInfos}
           showMoreInfos={activeIndex === index}
           onClick={() => handleClick(index)}
           objectPosition={event.objectPosition}
+          withoutButton={true}
         />
       ))}
     </div>
