@@ -16,6 +16,7 @@ interface Menus {
   title: string;
   url: string;
   haveDropDown?: boolean;
+  dropdownUrl?: string;
 }
 
 export const menus: Menus[] = [
@@ -25,7 +26,10 @@ export const menus: Menus[] = [
   { title: "Réservation", url: "/reservation" },
   { title: "Avis", url: "/avis" },
   { title: "La boutique", url: "/la-boutique" },
-  { title: "Actualités", url: "/actualites" },
+  {
+    title: "Actualités",
+    url: "/actualites",
+  },
 ];
 
 export const App = () => {

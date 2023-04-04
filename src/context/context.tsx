@@ -7,7 +7,7 @@ import React, {
 } from "react";
 
 export interface GlobalContext {
-  darkMode: boolean;
+  darkMode?: boolean;
   primary?: string;
   secondary?: string;
   tertiary?: string;
@@ -16,6 +16,7 @@ export interface GlobalContext {
   regular?: string;
   semiBold?: string;
   bold?: string;
+  showCart: boolean;
 }
 
 const initialState: GlobalContext = {
@@ -28,19 +29,18 @@ const initialState: GlobalContext = {
   regular: "regular",
   semiBold: "semi-bold",
   bold: "bold",
+  showCart: false,
 };
 
 const reducer = (state: GlobalContext, action: any): GlobalContext => {
   switch (action.type) {
-    case "DARK":
+    case false:
       return {
-        darkMode: true,
-        primary: "text-dark",
+        showCart: true,
       };
-    case "LIGHT":
+    case true:
       return {
-        darkMode: false,
-        primary: "text-white",
+        showCart: false,
       };
     default:
       return state;

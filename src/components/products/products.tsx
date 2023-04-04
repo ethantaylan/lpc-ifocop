@@ -1,11 +1,13 @@
 import React from "react";
 import { filters } from "../filters/filters-array";
-import { ProductsCards } from "../popular-products/popular-product-cards/product-cards";
+import { ProductsCards } from "./product-cards/product-cards";
 import { ProductModal } from "./product-modal/product-modal";
 import { Title } from "../title/title";
 import { FilterLabels } from "./products-labels/products-labels";
 import { ProductsPrices } from "./products-prices/products-prices";
 import { ProductsRating } from "./products-rating/products-rating";
+import { OffCanvas } from "../offcanvas/offcanvas";
+import { useGlobalContext, useGlobalDispatch } from "../../context/context";
 
 export const Products: React.FC = () => {
   const [products, setProducts] = React.useState([]);
@@ -21,13 +23,7 @@ export const Products: React.FC = () => {
     setCategory(category);
   }, [category]);
 
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
-  // fetch("https://fakestoreapi.com/carts/5")
-  //   .then((res) => res.json())
-  //   .then((json) => console.log(json));
+  const [openModal, setOpenModal] = React.useState<boolean>(false);
 
   const handleFetchClothing = async (sexe: string) => {
     await fetch(`https://fakestoreapi.com/products/category/${sexe}'s clothing`)
@@ -39,11 +35,22 @@ export const Products: React.FC = () => {
     handleFetchClothing("men");
   }, []);
 
+  const { showCart } = useGlobalContext();
+  const dispatch = useGlobalDispatch();
+
+  const handleCloseCanvas = () => {
+    dispatch({
+      type: showCart ? true : false,
+      payload: null,
+    });
+  };
+
   return (
     <React.Fragment>
+      <OffCanvas onClose={() => handleCloseCanvas()} showCanvas={showCart} />
       <ProductModal
-        onClose={() => handleClose()}
-        show={open}
+        onClose={() => setOpenModal(false)}
+        show={openModal}
         title={productTitle}
         description={productDescription}
         img={productImg}
@@ -73,7 +80,7 @@ export const Products: React.FC = () => {
                 <ProductsCards
                   price={`${product.price.toFixed(2)} €`}
                   onClick={() => {
-                    handleOpen();
+                    setOpenModal(true);
                     setProductImg(product.image);
                     setProductTitle(product.title);
                     setProductPrice(product.price);

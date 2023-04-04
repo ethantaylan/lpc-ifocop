@@ -8,7 +8,7 @@ export const RecruitmentSection = (props: Props) => {
   const theme = useGlobalContext();
 
   return (
-    <div>
+    <div id="recrutement">
       <Title h5 className="my-5" title="Recrutement" />
       <p>
         <span className="bold">

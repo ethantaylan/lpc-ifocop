@@ -1,4 +1,4 @@
-import { RatingList } from "../../rating-list/rating-list";
+import { RatingList } from "./rating-list/rating-list";
 import { Title } from "../../title/title";
 
 export const ProductsRating = () => {
