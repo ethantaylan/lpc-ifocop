@@ -1,4 +1,4 @@
-import Councils2 from "../../assets/Councils-2.jpg";
+import Councils2 from "../../assets/councils-2.jpg";
 import { useGlobalContext } from "../../context/context";
 import { FaLeaf } from "react-icons/fa";
 
