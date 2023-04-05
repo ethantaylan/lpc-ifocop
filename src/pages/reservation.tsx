@@ -7,22 +7,28 @@ import DatePicker from "../components/date-picker/date-picker";
 import BasicSelect from "../components/select/select";
 import { useGlobalContext } from "../context/context";
 import { PaymentSection } from "../components/payment-section/payment-section";
+import { useMatches } from "../hooks/use-matches";
 
 export const Reservation: React.FC = () => {
   const theme = useGlobalContext();
 
   const [activeIndex, setActiveIndex] = React.useState<number>();
-  const [hover, setHover] = React.useState<boolean>(false);
 
   const handleHover = (index: number) => {
     setActiveIndex(index);
   };
 
+  const matches = useMatches();
+
   return (
     <div>
       <BookingBanner />
-      <div className="d-flex text-left flex-row w-100 my-5 justify-content-center">
-        <div className="d-flex flex-column pe-5 w-100">
+      <div
+        className={`d-flex ${
+          matches && "flex-column"
+        } text-left flex-row w-100 my-5 justify-content-center`}
+      >
+        <div className={`d-flex flex-column w-100 ${!matches && "pe-5"}`}>
           <p className="w-100 mb-5">
             <Title
               h6
@@ -44,19 +50,21 @@ export const Reservation: React.FC = () => {
             coachs personnels shoppers{" "}
             <span className="bold">compétents et passionnés</span>.
           </p>
-          <div className="d-flex w-100">
+          <div className="d-flex mb-4 justify-content-center flex-wrap">
             {Users.map((user: UsersProps, index: number) => (
               <div
                 onMouseEnter={() => {
                   handleHover(index);
                 }}
                 onMouseLeave={() => setActiveIndex(undefined)}
-                className="d-flex cursor-pointer flex-column align-items-center w-100"
+                className={`d-flex me-4 ${
+                  matches && "flex-wrap"
+                } justify-content-center cursor-pointer flex-column align-items-center`}
               >
                 <img
                   key={index}
                   style={{
-                    transition: '0.2s',
+                    transition: "0.2s",
                     width: 100,
                     height: 140,
                     objectFit: "cover",

@@ -5,15 +5,17 @@ import { MapCards } from "../components/map-cards/map-cards";
 import { PaymentSection } from "../components/payment-section/payment-section";
 import { SimpleMap } from "../components/simple-map/simple-map";
 import { StoresInformations } from "../components/stores-informations";
+import { useMatches } from "../hooks/use-matches";
 
 export const NosPointsDeVentes = () => {
   const [markerPosition, setMarkerPosition] = React.useState<number[]>([
     51.505, -0.09,
   ]);
-  
+
+  const matches = useMatches();
 
   return (
-    <div className="w-100 d-flex justify-content-center align-items-center flex-column">
+    <div className={`w-100 d-flex flex-column justify-content-center align-items-center`}>
       <h1 className="bold my-5 primary">Nos points de ventes</h1>
       <input
         style={{
@@ -25,8 +27,8 @@ export const NosPointsDeVentes = () => {
         placeholder="Entrer une location"
         className="text-center p-2 mb-2"
       />
-      <div className="d-flex my-4 w-100">
-        <div className="w-75">
+      <div className={`d-flex ${matches && "flex-column"} my-4 w-100`}>
+        <div className="w-100">
           <SimpleMap markerPosition={markerPosition} />
         </div>
         <div className="d-flex flex-column">
@@ -52,14 +54,14 @@ export const NosPointsDeVentes = () => {
         </div>
       </div>
       <p className="text-start w-100">
-        Nos boutiques sont ouvertes du {" "}
+        Nos boutiques sont ouvertes du{" "}
         <span className="bold">
           lundi au samedi de 9h à 12h et de 14h à 19h30.{" "}
         </span>
         <p className="mt-2">
           Venez découvrir notre gamme de produits de qualité à des prix
-          compétitifs. Nos équipes sont prêtes à vous accueillir et à
-          répondre à toutes vos questions. <br />
+          compétitifs. Nos équipes sont prêtes à vous accueillir et à répondre à
+          toutes vos questions. <br />
           <span className="bold mt-4 d-flex">
             {" "}
             Nous espérons vous voir bientôt dans nos boutiques !

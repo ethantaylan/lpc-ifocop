@@ -24,7 +24,7 @@ export const Footer = () => {
         className={`mt-5 mt d-flex ${
           matches && "flex-column"
         } justify-content-between secondary`}
-        style={{ backgroundColor: primary, padding: 70 }}
+        style={{ backgroundColor: primary, padding: matches ? 20 : 70 }}
       >
         <div className="d-flex w-100 flex-column">
           <span className="mb-4 cursor-pointer">

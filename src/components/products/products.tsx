@@ -8,6 +8,8 @@ import { ProductsPrices } from "./products-prices/products-prices";
 import { ProductsRating } from "./products-rating/products-rating";
 import { OffCanvas } from "../offcanvas/offcanvas";
 import { useGlobalContext, useGlobalDispatch } from "../../context/context";
+import { useMatches } from "../../hooks/use-matches";
+import { BSAccordion } from "../accordion/accordion";
 
 export const Products: React.FC = () => {
   const [products, setProducts] = React.useState([]);
@@ -45,6 +47,8 @@ export const Products: React.FC = () => {
     });
   };
 
+  const matches = useMatches();
+
   return (
     <React.Fragment>
       <OffCanvas onClose={() => handleCloseCanvas()} showCanvas={showCart} />
@@ -61,20 +65,19 @@ export const Products: React.FC = () => {
         <Title h1 title={"Nos produits"} className="my-5" />
       </p>
 
-      <div className="d-flex mt-5">
-        <div className="d-flex w-25 flex-column">
+      <div className={`d-flex ${matches && "flex-column"} mt-5`}>
+        <div className={`d-flex ${matches ? "w-100" : "w-25"} flex-column`}>
           <FilterLabels
             fetchHommes={() => handleFetchClothing("men")}
             fetchFemmes={() => handleFetchClothing("women")}
             onClick={undefined}
             filters={filters}
           />
-          <ProductsPrices />
-          <ProductsRating />
         </div>
+
         <div className="d-flex"></div>
-        <div className="ms-4 d-flex flex-column">
-          <div className="d-flex w-100 flex-wrap">
+        <div className="d-flex flex-column">
+          <div className="d-flex w-100 justify-content-center flex-wrap">
             {products &&
               products.map((product: any) => (
                 <ProductsCards
