@@ -61,9 +61,7 @@ export const Products: React.FC = () => {
         price={productPrice}
         subDescription={""}
       />
-      <p className="text-center primary my-5">
-        <Title h1 title={"Nos produits"} className="my-5" />
-      </p>
+
 
       <div className={`d-flex ${matches && "flex-column"} mt-5`}>
         <div className={`d-flex ${matches ? "w-100" : "w-25"} flex-column`}>

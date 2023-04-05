@@ -33,10 +33,10 @@ export const Reservation: React.FC = () => {
             <Title
               h6
               className="primary mb-4"
-              title="Prennez rendez-vous avec l'un de nos coach personnel shopper"
+              title="Prennez rendez-vous avec l'un de nos coach personnal shopper"
             />{" "}
             Notre équipe de{" "}
-            <span className="bold">coachs personnels shoppers</span> est là pour
+            <span className="bold">coachs personnals shoppers</span> est là pour
             vous aider à développer{" "}
             <span className="text-underline">votre style personnel</span> et à
             vous guider tout au long de votre processus d'achat. Que vous
@@ -47,7 +47,7 @@ export const Reservation: React.FC = () => {
             aider à atteindre vos objectifs de style et à vous sentir confiant
             et élégant dans toutes les situations. <br /> <br /> Réservez dès
             maintenant pour commencer votre voyage de style avec l'un de nos
-            coachs personnels shoppers{" "}
+            coachs personnals shoppers{" "}
             <span className="bold">compétents et passionnés</span>.
           </p>
           <div className="d-flex mb-4 justify-content-center flex-wrap">

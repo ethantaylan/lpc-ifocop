@@ -1,12 +1,12 @@
 import { BsHandbag, BsHeart, BsHeartFill, BsSearch } from "react-icons/bs";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { menus } from "../../App";
 import { SubMenu } from "./sub-menu/sub-menu";
 import { Input } from "@mui/material";
 import React from "react";
 import { useGlobalContext, useGlobalDispatch } from "../../context/context";
 import { useMatches } from "../../hooks/use-matches";
-import { AiOutlineMenu } from "react-icons/ai";
+import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 
 export const Header: React.FC = () => {
   const matches = useMatches();
@@ -18,6 +18,7 @@ export const Header: React.FC = () => {
   const { showCart } = useGlobalContext();
 
   const dispatch = useGlobalDispatch();
+  const navigate = useNavigate();
 
   const handleOpenCart = () => {
     dispatch({
@@ -36,7 +37,11 @@ export const Header: React.FC = () => {
   return (
     <div className="d-flex py-5 w-100 m flex-column text-dark">
       <div className={`d-flex justify-content-between align-items-center`}>
-        <span style={{ whiteSpace: "nowrap" }} className="cursor-pointer">
+        <span
+          onClick={() => navigate("/")}
+          style={{ whiteSpace: "nowrap" }}
+          className="cursor-pointer"
+        >
           LE PETIT <span className="bold">COMMERCE</span>
         </span>
 
@@ -51,17 +56,27 @@ export const Header: React.FC = () => {
         )}
 
         {matches && (
-          <AiOutlineMenu
-            onClick={() => showMenu(!menu)}
-            className="cursor-pointer"
-            size={20}
-          />
+          <>
+            {menu ? (
+              <AiOutlineClose
+                onClick={() => showMenu(!menu)}
+                className="cursor-pointer"
+                size={20}
+              />
+            ) : (
+              <AiOutlineMenu
+                onClick={() => showMenu(!menu)}
+                className="cursor-pointer"
+                size={20}
+              />
+            )}
+          </>
         )}
       </div>
       <div
-        className={`mt-5 d-flex w-100 justify-content-${
-          matches ? "between" : "between"
-        }`}
+        className={`${
+          matches ? "mt-2" : "mt-5"
+        } d-flex w-100 justify-content-${matches ? "between" : "between"}`}
       >
         <ul
           className={`navbar-nav d-${menu ? "flex" : "none"}  ${
@@ -106,7 +121,7 @@ export const Header: React.FC = () => {
         >
           <Input
             className="m-0"
-            style={{ width: searchBar ? 200 : 0, transition: "0.5s" }}
+            style={{ width: searchBar ? 120 : 0, transition: "0.5s" }}
           />
           <SubMenu
             firstLabel={
