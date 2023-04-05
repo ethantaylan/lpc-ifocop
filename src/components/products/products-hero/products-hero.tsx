@@ -1,4 +1,4 @@
-import Casquettes from "../../../assets/products/Casquettes.jpeg";
+import Casquettes from "../../../assets/products/casquettes.jpeg";
 
 export const ProductsHero = () => {
   return (
