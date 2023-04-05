@@ -12,14 +12,18 @@ import {
   FooterInformationsLinksProps,
   FooterInformationsProps,
 } from "./footer-informations";
+import { useMatches } from "../../hooks/use-matches";
 
 export const Footer = () => {
   const { primary } = useGlobalContext();
+  const matches = useMatches();
 
   return (
     <React.Fragment>
       <div
-        className="mt-5 mt d-flex justify-content-between secondary"
+        className={`mt-5 mt d-flex ${
+          matches && "flex-column"
+        } justify-content-between secondary`}
         style={{ backgroundColor: primary, padding: 70 }}
       >
         <div className="d-flex w-100 flex-column">
@@ -31,6 +35,7 @@ export const Footer = () => {
           </small>
           <small className="mb-4 hover-underline cursor-pointer">Contact</small>
           <SubMenu
+            className={matches ? "mb-3" : ""}
             firstLabel={
               <span
                 className="p-2 d-flex"
@@ -65,17 +70,19 @@ export const Footer = () => {
               </span>
             }
           />
-          <small className="mt-4">Made by @ethantaylan with 💚</small>
         </div>
         {FooterInformations.map((t: FooterInformationsProps, index: number) => (
-          <ul key={index} className="nav w-25 d-flex flex-column">
-            <span className="bold">{t.title}</span>
+          <ul
+            key={index}
+            className={`nav ${matches ? "w-100" : "w-50"} d-flex flex-column`}
+          >
+            <span className="bold mb-3">{t.title}</span>
             <small>
               {t.links.map(
                 (link: FooterInformationsLinksProps, index: number) => (
                   <li
                     key={index}
-                    className={`my-2 ${
+                    className={`my-2 me-3 ${
                       link.isImportant && "bold"
                     } cursor-pointer hover-underline`}
                   >
@@ -83,6 +90,7 @@ export const Footer = () => {
                   </li>
                 )
               )}
+              {matches && <hr className="w-100" />}
             </small>
           </ul>
         ))}

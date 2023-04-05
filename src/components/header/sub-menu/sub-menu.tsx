@@ -26,9 +26,15 @@ export const SubMenu: React.FC<SubMenuProps> = ({
   return (
     <small>
       <ul className={`${subMenuClasses} ${className}`}>
-        <li className={liClasses}>{firstLabel}</li>
-        <li className={liClasses}>{secondLabel}</li>
-        <li className={liClasses}>{thirdLabel}</li>
+        <li style={{ whiteSpace: "nowrap" }} className={liClasses}>
+          {firstLabel}
+        </li>
+        <li style={{ whiteSpace: "nowrap" }} className={liClasses}>
+          {secondLabel}
+        </li>
+        <li style={{ whiteSpace: "nowrap" }} className={liClasses}>
+          {thirdLabel}
+        </li>
       </ul>
     </small>
   );

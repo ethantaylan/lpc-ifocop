@@ -1,15 +1,18 @@
 import Councils2 from "../../assets/councils-2.jpg";
-import { useGlobalContext } from "../../context/context";
 import { FaLeaf } from "react-icons/fa";
+import { useMatches } from "../../hooks/use-matches";
+import React from "react";
 
 export interface CuncilProps {}
 
 export const Councils: React.FC = () => {
-  const theme = useGlobalContext();
+  const matches = useMatches();
 
   return (
-    <>
-      <div className="w-100 mt-5 mb-5 d-flex">
+    <React.Fragment>
+      <div
+        className={`w-100 mt-5 mb-5 d-flex flex-${matches ? "column" : "row"}`}
+      >
         <div className="w-100 position-relative">
           <img
             width="100%"
@@ -20,7 +23,9 @@ export const Councils: React.FC = () => {
         </div>
         <div className=" d-flex w-100 flex-column">
           <h1
-            className="primary m-0 text-center w-100 p-4 bold"
+            className={`primary ${
+              matches && "mt-4"
+            } text-center w-100 p-4 bold`}
             style={{
               bottom: "0px",
               borderRadius: "0px",
@@ -28,7 +33,7 @@ export const Councils: React.FC = () => {
           >
             Mission dressing pour le printemps <FaLeaf />
           </h1>
-          <p className="p-5">
+          <p className={matches ? "p-2" : "p-4"}>
             <br />
             Le printemps est une saison de renouveau et de rafraîchissement, et
             cela se reflète dans la mode. Les vêtements printaniers sont légers,
@@ -63,6 +68,6 @@ export const Councils: React.FC = () => {
         </div>
       </div>
       <hr />
-    </>
+    </React.Fragment>
   );
 };

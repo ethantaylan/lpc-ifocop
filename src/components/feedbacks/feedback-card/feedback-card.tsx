@@ -1,6 +1,7 @@
 import { Rating } from "@mui/material";
 import React from "react";
 import "./feedback-card.scss";
+import { useMatches } from "../../../hooks/use-matches";
 
 export interface FeedBackCardProps {
   avatar?: number;
@@ -17,11 +18,24 @@ export const FeedbackCard: React.FC<FeedBackCardProps> = ({
   avatar,
   starValue,
 }) => {
+  const matches = useMatches();
+
   return (
-    <div style={{width: 400}} className="m-4">
-      <div className="card" style={{ width: "18rem;" }}>
-        <div style={{height: 150, overflow: 'hidden', textOverflow: 'ellipsis',}} className="card-body">
-          <div className="d-flex mb-3 align-items-center justify-content-between w-100">
+    <div style={{ width: matches ? 300 : 380 }} className="m-4">
+      <div className="card">
+        <div
+          style={{
+            height: matches ? "auto" : 180,
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+          }}
+          className="card-body"
+        >
+          <div
+            className={`d-flex ${matches ? "flex-column" : ""} mb-3 ${
+              matches && "align-items-center"
+            } justify-content-between w-100`}
+          >
             <div className="d-flex align-items-center ">
               <img
                 src={`https://mdbcdn.b-cdn.net/img/new/avatars/${avatar}.webp`}

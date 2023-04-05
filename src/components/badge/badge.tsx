@@ -1,5 +1,6 @@
 import React from "react";
 import { useGlobalContext } from "../../context/context";
+import { useMatches } from "../../hooks/use-matches";
 
 export interface BadgeProps {
   icon: React.ReactElement;
@@ -7,7 +8,7 @@ export interface BadgeProps {
 }
 
 export const Badge: React.FC<BadgeProps> = ({ icon, label }) => {
-  const { tertiary } = useGlobalContext();
+  const matches = useMatches();
 
   return (
     <div className="d-flex flex-column align-items-center">
@@ -20,7 +21,7 @@ export const Badge: React.FC<BadgeProps> = ({ icon, label }) => {
       >
         <span className="mb-3">{icon}</span>
       </div>
-      <h6 className="semi-bold">{label}</h6>
+      <h6 className="semi-bold text-center mx-2">{label}</h6>
     </div>
   );
 };
