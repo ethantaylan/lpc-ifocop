@@ -2,6 +2,7 @@ import React from "react";
 import { menus } from "../../App";
 import PaymentOptionsImg from "../../assets/payments-options.png";
 import { useMatches } from "../../hooks/use-matches";
+import { NavLink } from "react-router-dom";
 
 export const PaymentSection = () => {
   const matches = useMatches();
@@ -23,17 +24,17 @@ export const PaymentSection = () => {
               key={index}
               className={`nav-item me-3 ${menu.haveDropDown && "dropdown"}`}
             >
-              <a
+              <NavLink
                 className={`nav-link semi-bold ${
                   menu.haveDropDown && " dropdown-toggle"
                 }`}
-                href={menu.url ? menu.url : "#"}
+                to={menu.url ? menu.url : "#"}
                 id={menu.haveDropDown && "navbarDropdown"}
                 data-bs-toggle={menu.haveDropDown && "dropdown"}
                 role={menu.haveDropDown && "button"}
               >
                 {menu.title}
-              </a>
+              </NavLink>
             </li>
           ))}
         </ul>
