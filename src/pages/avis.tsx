@@ -2,15 +2,13 @@ import { Button, Input, Rating, TextField } from "@mui/material";
 import { Feedbacks } from "../components/feedbacks/feedbacks";
 import { useGlobalContext } from "../context/context";
 
-type Props = {};
-
-export const Avis = (props: Props) => {
+export const Avis = () => {
   const theme = useGlobalContext();
 
   return (
     <div className="d-flex w-100 flex-column align-items-center justify-content-center">
       <Feedbacks forHomePage={false} />
-      <div className="w-75">
+      <div className="w-100">
       <span className="bold h5">Laissez le votre !</span>
       <div className="d-flex w-100 mt-5 justify-content-center">
         {" "}

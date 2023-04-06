@@ -61,8 +61,6 @@ export const Products: React.FC = () => {
         price={productPrice}
         subDescription={""}
       />
-
-
       <div className={`d-flex ${matches && "flex-column"} mt-5`}>
         <div className={`d-flex ${matches ? "w-100" : "w-25"} flex-column`}>
           <FilterLabels
@@ -72,8 +70,6 @@ export const Products: React.FC = () => {
             filters={filters}
           />
         </div>
-
-        <div className="d-flex"></div>
         <div className="d-flex flex-column">
           <div className="d-flex w-100 justify-content-center flex-wrap">
             {products &&

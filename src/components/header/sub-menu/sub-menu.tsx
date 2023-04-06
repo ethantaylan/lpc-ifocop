@@ -1,11 +1,12 @@
 import React from "react";
 import classNames from "classnames";
+import { useMatches } from "../../../hooks/use-matches";
 
 interface SubMenuProps {
   className?: string;
   firstLabel: string | React.ReactElement;
   secondLabel: string | React.ReactElement;
-  thirdLabel: string | React.ReactElement;
+  thirdLabel?: string | React.ReactElement;
 }
 
 const subMenuClasses = classNames(
@@ -23,6 +24,9 @@ export const SubMenu: React.FC<SubMenuProps> = ({
   secondLabel,
   thirdLabel,
 }) => {
+
+  const matches = useMatches()
+
   return (
     <small>
       <ul className={`${subMenuClasses} ${className}`}>

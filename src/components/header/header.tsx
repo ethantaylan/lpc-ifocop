@@ -35,7 +35,7 @@ export const Header: React.FC = () => {
   }, [matches]);
 
   return (
-    <div className="d-flex py-5 w-100 m flex-column text-dark">
+    <div className="d-flex pt-4 pb-5 w-100 m flex-column text-dark">
       <div className={`d-flex justify-content-between align-items-center`}>
         <span
           onClick={() => navigate("/")}
@@ -74,9 +74,9 @@ export const Header: React.FC = () => {
         )}
       </div>
       <div
-        className={`${
-          matches ? "mt-2" : "mt-5"
-        } d-flex w-100 justify-content-${matches ? "between" : "between"}`}
+        className={`${matches ? "mt-2" : "mt-5"} d-flex w-100 justify-content-${
+          matches ? "between" : "between"
+        }`}
       >
         <ul
           className={`navbar-nav d-${menu ? "flex" : "none"}  ${
@@ -113,34 +113,36 @@ export const Header: React.FC = () => {
               )}
             </li>
           ))}
+          <hr />
+          <div
+            className={`d-flex align-items-${
+              matches ? "start" : "center"
+            } justify-content-center`}
+          >
+            <Input
+              className="m-0"
+              style={{ width: searchBar ? 120 : 0, transition: "0.5s" }}
+            />
+            <SubMenu
+              firstLabel={
+                <>
+                  <BsSearch
+                    onClick={() => {
+                      setSearchBar(!searchBar);
+                    }}
+                  />
+                  <span className="ms-2">Rechercher</span>
+                </>
+              }
+              secondLabel={
+                <>
+                  <BsHeart onClick={() => navigate("/avis")} />
+                  <span className="ms-2">Laissez un avis</span>
+                </>
+              }
+            />
+          </div>{" "}
         </ul>
-        <div
-          className={`d-flex align-items-${
-            matches ? "start" : "center"
-          } justify-content-center`}
-        >
-          <Input
-            className="m-0"
-            style={{ width: searchBar ? 120 : 0, transition: "0.5s" }}
-          />
-          <SubMenu
-            firstLabel={
-              <BsSearch
-                onClick={() => {
-                  setSearchBar(!searchBar);
-                }}
-              />
-            }
-            secondLabel={
-              like ? (
-                <BsHeartFill onClick={() => setLike(!like)} />
-              ) : (
-                <BsHeart onClick={() => setLike(!like)} />
-              )
-            }
-            thirdLabel={<BsHandbag onClick={() => handleOpenCart()} />}
-          />
-        </div>
       </div>
     </div>
   );

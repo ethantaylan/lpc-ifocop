@@ -34,9 +34,12 @@ export const LaBoutique: React.FC = () => {
 
   return (
     <div className="w-100">
-      <Title h1 className="my-5 text-center primary" title="La boutique" />
+      <p>
+        {" "}
+        <Title h1 className="text-center primary" title="La boutique" />
+      </p>
       <video
-        height={600}
+        height={matches ? 300 : 600}
         className="w-100 position-relative"
         autoPlay={true}
         loop={true}

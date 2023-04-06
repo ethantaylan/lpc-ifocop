@@ -16,10 +16,10 @@ export const NosPointsDeVentes = () => {
 
   return (
     <div className={`w-100 d-flex flex-column justify-content-center align-items-center`}>
-      <h1 className="bold my-5 primary">Nos points de ventes</h1>
+      <h1 className="bold mb-4 primary">Nos points de ventes</h1>
       <input
         style={{
-          width: "70%",
+          width: "100%",
           border: "none",
           backgroundColor: "rgb(245,245,245)",
         }}

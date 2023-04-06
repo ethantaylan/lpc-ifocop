@@ -25,6 +25,7 @@ export const PaymentSection = () => {
               className={`nav-item me-3 ${menu.haveDropDown && "dropdown"}`}
             >
               <NavLink
+                onClick={() => window.scrollTo(0, 0)}
                 className={`nav-link semi-bold ${
                   menu.haveDropDown && " dropdown-toggle"
                 }`}

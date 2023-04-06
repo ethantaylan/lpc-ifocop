@@ -51,7 +51,7 @@ export const ProductsCards: React.FC<ProductsProps> = ({
         {withRating && <small className="ms-1 text-secondary">({count})</small>}
       </div>
       <p onClick={onClick} className="m-0 semi-bold cursor-pointer tertiary">
-        See details <BsArrowRightShort size={22} />
+        Plus de détails <BsArrowRightShort size={22} />
       </p>
     </div>
   );

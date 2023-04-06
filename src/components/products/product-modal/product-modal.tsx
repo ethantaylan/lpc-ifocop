@@ -6,16 +6,7 @@ import Modal from "@mui/material/Modal";
 import { useGlobalContext } from "../../../context/context";
 import { Badge, Chip } from "@mui/material";
 import { CloseButton } from "react-bootstrap";
-
-const style = {
-  position: "absolute" as "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  bgcolor: "background.paper",
-  boxShadow: 24,
-  p: 4,
-};
+import { useMatches } from "../../../hooks/use-matches";
 
 function circleStyle(bgcolor: string, isWhite?: boolean) {
   return {
@@ -64,6 +55,8 @@ export const ProductModal: React.FC<ProductModalProps> = ({
   subDescription,
 }) => {
   const theme = useGlobalContext();
+  const matches = useMatches();
+  const [plus, setPlus] = React.useState<boolean>(false);
 
   return (
     <Modal
@@ -73,30 +66,59 @@ export const ProductModal: React.FC<ProductModalProps> = ({
       aria-describedby="modal-modal-description"
     >
       <div>
-        <Box sx={style}>
-          <div className="d-flex justify-content-center align-items-center">
-            <div className="me-5">
+        <Box
+          sx={{
+            position: "absolute" as "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            bgcolor: "background.paper",
+            boxShadow: 24,
+            width: matches ? 300 : 600,
+            p: 4,
+          }}
+        >
+          <div className="d-flex w-100 justify-content-end">
+            <CloseButton onClick={onClose} />
+          </div>
+
+          <div className="d-flex flex-wrap flex-column justify-content-center align-items-center">
+            <div className="mb-5">
               <img
-                style={{ objectFit: "cover", borderRadius: 8, width: 200 }}
+                style={{
+                  objectFit: "cover",
+                  borderRadius: 8,
+                  width: matches ? 120 : 180,
+                }}
                 src={img}
               />
             </div>
             <div className="d-flex w-100 flex-column">
-              <div className="w-100 d-flex justify-content-end">
-                <CloseButton onClick={onClose} />
-              </div>
+              <div className="w-100 d-flex justify-content-end"></div>
               <Typography
                 className="w-100 b-5 mb-4 primary"
                 id="modal-modal-title"
                 variant="h5"
                 component="h5"
-                style={{ whiteSpace: "nowrap" }}
+                style={{ whiteSpace: "nowrap", overflow: 'hidden', textOverflow: 'ellipsis'}}
               >
                 {title}
               </Typography>
-              <p>{description}</p>
-              <p>{price?.toFixed(2)} €</p>
-              <p>{subDescription}</p>
+              <p
+                className="w-100"
+                style={{
+                  whiteSpace: plus ? 'normal' : "nowrap",
+                  overflow: plus ? 'visible' : 'hidden',
+                  textOverflow: "ellipsis",
+                }}
+              >
+                {description}
+              </p>
+              <button onClick={() => setPlus(!plus)} className="btn btn-outline text-secondary">{plus ? 'Fermer' : 'Description complète'}</button>
+              <hr />
+              <p className="bold primary" style={{ fontSize: 26 }}>
+                {price?.toFixed(2)} €
+              </p>
               <div className="d-flex flex-wrap">
                 {Circles.map((circleColor: string, index: number) => (
                   <span
@@ -106,7 +128,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({
                   />
                 ))}
               </div>
-              <div className="d-flex my-5 w-100 mb-5">
+              <div className="d-flex flex-wrap w-100 mb-2">
                 {Sizes.map((size: string, index: number) => (
                   <Chip
                     key={index}

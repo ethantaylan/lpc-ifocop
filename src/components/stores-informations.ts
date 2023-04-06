@@ -12,7 +12,7 @@ export interface StoresInformationsProps {
 export const StoresInformations: StoresInformationsProps[] = [
   {
     city: "Paris",
-    adress: "99 rue John Doe",
+    adress: "104 rue des Mouettes",
     number: "+331 23 45 67 89",
     postcode: 18,
     position: [48.892156, 2.331827],
@@ -26,7 +26,7 @@ export const StoresInformations: StoresInformationsProps[] = [
   },
   {
     city: "Saint-Malo",
-    adress: "91 rue des rosiers",
+    adress: "91 rue des Rosiers",
     number: "+331 23 45 67 89",
     postcode: 35400,
     position: [48.652828, -1.999470],

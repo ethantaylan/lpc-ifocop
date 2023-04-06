@@ -98,7 +98,7 @@ export const Feedbacks: React.FC<FeedbacksProps> = ({ forHomePage }) => {
       date: "21/02/2022",
     },
   ];
- const displayFeedbacks = forHomePage ? feedbacks.splice(0,5) : feedbacks
+  const displayFeedbacks = forHomePage ? feedbacks.splice(0, 5) : feedbacks;
 
   return (
     <React.Fragment>
@@ -106,8 +106,8 @@ export const Feedbacks: React.FC<FeedbacksProps> = ({ forHomePage }) => {
         <div className="d-flex flex-column">
           <Title
             h1
-            title={`${forHomePage ? 'Avis récents' : 'Avis de nos clients'}`}
-            className={"my-5 primary text-center"}
+            title={`${forHomePage ? "Avis récents" : "Avis de nos clients"}`}
+            className={"primary text-center"}
           />
           <div className="d-flex me-4 mb-4 justify-content-center flex-row flex-wrap w-100">
             {displayFeedbacks.map(

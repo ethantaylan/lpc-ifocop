@@ -7,7 +7,7 @@ export const ProductsHero = () => {
           src={Casquettes}
           style={{ objectFit: "cover", opacity: 1, }}
           width={"100%"}
-          height={500}
+          height={300}
           alt=""
         />
       </div>
