@@ -4,8 +4,9 @@ import {
   EvenementCardsProps,
 } from "../evenements/evenements-cards/evenements-cards";
 import { EventsProps } from "../evenements/evenements";
-import Press1 from '../../assets/press/1.jpeg'
-import Press2 from '../../assets/press/2.jpeg'
+import Press1 from "../../assets/press/1.jpeg";
+import Press2 from "../../assets/press/2.jpeg";
+import { useMatches } from "../../hooks/use-matches";
 
 export const PresseArray: EventsProps[] = [
   {
@@ -29,19 +30,33 @@ export const PresseArray: EventsProps[] = [
 ];
 
 export const Presse: React.FC = () => {
+  const matches = useMatches();
+
+  const [activeIndex, setActiveIndex] = React.useState<number>();
+
+  const handleClick = (index: number) => {
+    setActiveIndex(index === activeIndex ? undefined : index);
+  };
+
   return (
     <div className="w-100">
-      <div className="w-100 d-flex justify-content-center align-items-center ">
-        {PresseArray.map((press: any) => (
+      <div
+        className={`w-100 d-flex flex-${
+          matches ? "column" : "row"
+        } justify-content-center align-items-center`}
+      >
+        {PresseArray.map((press: any, index: number) => (
           <EvenementCards
+            key={index}
             label={"Voir plus"}
             description={press.description}
             img={press.img}
             title={press.title}
-            moreInfos={""}
-            showMoreInfos={false}
+            moreInfos={press.moreInfos}
+            showMoreInfos={activeIndex === index}
+            onClick={() => handleClick(index)}
             className="m-3"
-            withoutButton={false}
+            withoutButton={true}
           />
         ))}
       </div>

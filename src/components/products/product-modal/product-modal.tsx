@@ -42,7 +42,7 @@ export interface ProductModalProps {
   description: string | undefined;
   img: any;
   price: any;
-  subDescription: string;
+  onClick: () => void;
 }
 
 export const ProductModal: React.FC<ProductModalProps> = ({
@@ -52,7 +52,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({
   onClose,
   img,
   price,
-  subDescription,
+  onClick
 }) => {
   const theme = useGlobalContext();
   const matches = useMatches();
@@ -100,21 +100,30 @@ export const ProductModal: React.FC<ProductModalProps> = ({
                 id="modal-modal-title"
                 variant="h5"
                 component="h5"
-                style={{ whiteSpace: "nowrap", overflow: 'hidden', textOverflow: 'ellipsis'}}
+                style={{
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                }}
               >
                 {title}
               </Typography>
               <p
                 className="w-100"
                 style={{
-                  whiteSpace: plus ? 'normal' : "nowrap",
-                  overflow: plus ? 'visible' : 'hidden',
+                  whiteSpace: plus ? "normal" : "nowrap",
+                  overflow: plus ? "visible" : "hidden",
                   textOverflow: "ellipsis",
                 }}
               >
                 {description}
               </p>
-              <button onClick={() => setPlus(!plus)} className="btn btn-outline text-secondary">{plus ? 'Fermer' : 'Description complète'}</button>
+              <button
+                onClick={() => setPlus(!plus)}
+                className="btn btn-outline text-secondary"
+              >
+                {plus ? "Fermer" : "Description complète"}
+              </button>
               <hr />
               <p className="bold primary" style={{ fontSize: 26 }}>
                 {price?.toFixed(2)} €
@@ -138,6 +147,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({
                 ))}
               </div>
               <Button
+                onClick={onClick}
                 className="w-100"
                 style={{ backgroundColor: theme.primary, color: "white" }}
               >

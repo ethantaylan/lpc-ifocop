@@ -12,20 +12,9 @@ export const Header: React.FC = () => {
   const matches = useMatches();
 
   const [searchBar, setSearchBar] = React.useState<boolean>(false);
-  const [like, setLike] = React.useState<boolean>(false);
   const [menu, showMenu] = React.useState<boolean>(false);
 
-  const { showCart } = useGlobalContext();
-
-  const dispatch = useGlobalDispatch();
   const navigate = useNavigate();
-
-  const handleOpenCart = () => {
-    dispatch({
-      type: showCart ? true : false,
-      payload: null,
-    });
-  };
 
   React.useEffect(() => {
     if (!matches) showMenu(true);
@@ -79,7 +68,9 @@ export const Header: React.FC = () => {
         }`}
       >
         <ul
-          className={`navbar-nav d-${menu ? "flex" : "none"}  ${
+          className={`navbar-nav d-${
+            menu ? "flex" : "none"
+          } justify-content-between ${
             !matches ? "flex-row" : "flex-column"
           }  mr-auto`}
         >
@@ -113,36 +104,41 @@ export const Header: React.FC = () => {
               )}
             </li>
           ))}
-          <hr />
-          <div
-            className={`d-flex align-items-${
-              matches ? "start" : "center"
-            } justify-content-center`}
-          >
-            <Input
-              className="m-0"
-              style={{ width: searchBar ? 120 : 0, transition: "0.5s" }}
-            />
-            <SubMenu
-              firstLabel={
-                <>
-                  <BsSearch
-                    onClick={() => {
-                      setSearchBar(!searchBar);
-                    }}
-                  />
-                  <span className="ms-2">Rechercher</span>
-                </>
-              }
-              secondLabel={
-                <>
-                  <BsHeart onClick={() => navigate("/avis")} />
-                  <span className="ms-2">Laissez un avis</span>
-                </>
-              }
-            />
-          </div>{" "}
         </ul>
+        <div
+          className={`d-flex align-items-${
+            matches ? "end" : "end"
+          } justify-content-start flex-column`}
+        >
+          <SubMenu
+            className={`d-flex flex-${matches ? "column" : "row"}`}
+            firstLabel={
+              <div className="d-flex flex-column">
+                <div
+                  onClick={() => {
+                    setSearchBar(!searchBar);
+                  }}
+                  className="d-fle align-items-center"
+                >
+                  <BsSearch />
+                  <span className="ms-2">Rechercher</span>
+                </div>
+                {searchBar && (
+                  <Input
+                    className="m-0"
+                    style={{ width: searchBar ? 120 : 0, transition: "0.5s" }}
+                  />
+                )}
+              </div>
+            }
+            secondLabel={
+              <>
+                <BsHeart onClick={() => navigate("/avis")} />
+                <span className="ms-2">Laissez un avis</span>
+              </>
+            }
+          />
+        </div>
       </div>
     </div>
   );

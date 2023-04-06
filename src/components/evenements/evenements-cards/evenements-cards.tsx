@@ -41,7 +41,9 @@ export const EvenementCards: React.FC<EvenementCardsProps> = ({
 
       <Card.Body>
         <Card.Title className="bold">{title}</Card.Title>
-        <Card.Text style={{ height: 220 }}>
+        <Card.Text
+          style={{ height: 220, overflowY: "hidden", textOverflow: "ellipsis" }}
+        >
           {description}
         </Card.Text>
         {showMoreInfos && <p>{moreInfos}</p>}

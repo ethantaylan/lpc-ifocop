@@ -2,14 +2,12 @@ import React from "react";
 import { filters } from "../filters/filters-array";
 import { ProductsCards } from "./product-cards/product-cards";
 import { ProductModal } from "./product-modal/product-modal";
-import { Title } from "../title/title";
 import { FilterLabels } from "./products-labels/products-labels";
-import { ProductsPrices } from "./products-prices/products-prices";
-import { ProductsRating } from "./products-rating/products-rating";
-import { OffCanvas } from "../offcanvas/offcanvas";
-import { useGlobalContext, useGlobalDispatch } from "../../context/context";
+import { Cart } from "../cart/cart";
 import { useMatches } from "../../hooks/use-matches";
-import { BSAccordion } from "../accordion/accordion";
+import { Button } from "@mui/material";
+import { BsFillCartFill } from "react-icons/bs";
+import { useGlobalContext } from "../../context/context";
 
 export const Products: React.FC = () => {
   const [products, setProducts] = React.useState([]);
@@ -20,12 +18,16 @@ export const Products: React.FC = () => {
   const [category, setCategory] = React.useState<string>(
     "/category/men's clothing"
   );
+  const [isCartOpen, setIsCartOpen] = React.useState<boolean>(false);
+  const [cart, setCart] = React.useState<any[]>([]);
+  const [openModal, setOpenModal] = React.useState<boolean>(false);
+
+  const matches = useMatches();
+  const theme = useGlobalContext();
 
   React.useEffect(() => {
     setCategory(category);
   }, [category]);
-
-  const [openModal, setOpenModal] = React.useState<boolean>(false);
 
   const handleFetchClothing = async (sexe: string) => {
     await fetch(`https://fakestoreapi.com/products/category/${sexe}'s clothing`)
@@ -37,21 +39,25 @@ export const Products: React.FC = () => {
     handleFetchClothing("men");
   }, []);
 
-  const { showCart } = useGlobalContext();
-  const dispatch = useGlobalDispatch();
-
-  const handleCloseCanvas = () => {
-    dispatch({
-      type: showCart ? true : false,
-      payload: null,
-    });
+  const addToCartHandler = (product: any) => {
+    setCart([...cart, product]);
   };
 
-  const matches = useMatches();
+  const removeFromCartHandler = () => {
+    const newCart = [...cart];
+    newCart.shift();
+    setCart(newCart);
+  };
 
   return (
     <React.Fragment>
-      <OffCanvas onClose={() => handleCloseCanvas()} showCanvas={showCart} />
+      <Cart
+        removeProduct={() => removeFromCartHandler()}
+        onClose={() => setIsCartOpen(false)}
+        showCanvas={isCartOpen}
+        products={cart}
+        onAddToCart={() => addToCartHandler(productTitle)}
+      />
       <ProductModal
         onClose={() => setOpenModal(false)}
         show={openModal}
@@ -59,9 +65,47 @@ export const Products: React.FC = () => {
         description={productDescription}
         img={productImg}
         price={productPrice}
-        subDescription={""}
+        onClick={() => {
+          addToCartHandler(productTitle);
+        }}
       />
-      <div className={`d-flex ${matches && "flex-column"} mt-5`}>
+
+      <div className={`d-flex w-100 ${matches && "flex-column"} mt-5`}>
+        <div
+          style={{
+            position: "fixed",
+            right: matches ? 0 : 30,
+            bottom: matches ? 0 : 60,
+            backgroundColor: "white",
+            borderRadius: matches ? 0 : 30,
+            width: matches ? "100%" : 120,
+            border: matches ? 0 : `1px solid ${theme.primary}`,
+            boxShadow: matches ? "0px -5px 30px rgba(0,0,0, 0.3)" : '0',
+          }}
+          className="d-flex cursor-pointer justify-content-center py-2"
+        >
+          <h5
+            className="m-0 position-relative primary d-flex align-items-center"
+            onClick={() => setIsCartOpen(true)}
+          >
+            Panier <BsFillCartFill className="ms-3" />
+            <span
+              className="d-flex align-items-center justify-content-center"
+              style={{
+                backgroundColor: "whitesmoke",
+                borderRadius: 100,
+                width: 12,
+                height: 12,
+                position: "absolute",
+                right: -7,
+                fontSize: 12,
+                top: 0,
+              }}
+            >
+              {cart.length}
+            </span>
+          </h5>
+        </div>
         <div className={`d-flex ${matches ? "w-100" : "w-25"} flex-column`}>
           <FilterLabels
             fetchHommes={() => handleFetchClothing("men")}

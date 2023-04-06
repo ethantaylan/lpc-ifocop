@@ -3,6 +3,7 @@ import { EvenementCards } from "./evenements-cards/evenements-cards";
 import Event1 from "../../assets/events/event-1.jpg";
 import Event2 from "../../assets/events/event-2.jpg";
 import Event3 from "../../assets/events/event-3.jpg";
+import { useMatches } from "../../hooks/use-matches";
 
 export interface EventsProps {
   img: any;
@@ -51,6 +52,8 @@ export const Evenements: React.FC = () => {
     setActiveIndex(index === activeIndex ? undefined : index);
   };
 
+  const matches = useMatches();
+
   return (
     <div className="d-flex flex-wrap justify-content-center align-items-start">
       {Events.map((event: EventsProps, index) => (
@@ -60,7 +63,7 @@ export const Evenements: React.FC = () => {
           description={event.description}
           img={event.img}
           title={event.title}
-          className={"m-3 w-25"}
+          className={`m-3 ${matches ? "w-100" : "w-25"}`}
           moreInfos={event.moreInfos}
           showMoreInfos={activeIndex === index}
           onClick={() => handleClick(index)}
