@@ -31,7 +31,7 @@ export const Hero = () => {
           src={HeroImg}
           width="100%"
           style={{ objectFit: "contain" }}
-          alt=""
+          alt="Image de femme habillée d'une robe"
         />
       </div>
     </div>

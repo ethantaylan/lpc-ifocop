@@ -29,7 +29,11 @@ export const CartProducts: React.FC<CartProps> = ({
               <>
                 <div className="d-flex my-3 align-items-center justify-content-center">
                   <div className="border p-2 me-2 d-flex align-items-center justify-content-center">
-                    <img src={product.image} width={40} alt="" />
+                    <img
+                      src={product.image}
+                      width={40}
+                      alt="Image de produit"
+                    />
                   </div>
                   <p
                     style={{
@@ -74,9 +78,7 @@ export const CartProducts: React.FC<CartProps> = ({
             <h3>Total : {total.toFixed(2)} €</h3>
             <div className="d-flex align-items-center">
               <Checkbox />
-              <small>
-                Accepter les conditions générales de ventes
-              </small>
+              <small>Accepter les conditions générales de ventes</small>
             </div>
 
             <button

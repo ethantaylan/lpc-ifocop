@@ -20,7 +20,7 @@ export const Actualites = () => {
               width="100%"
               style={{ objectPosition: "center", objectFit: "cover" }}
               src={Fashion1}
-              alt=""
+              alt="Fashion week"
             />{" "}
           </div>
           <div className=" d-flex w-100 flex-column">
@@ -94,7 +94,7 @@ export const Actualites = () => {
               width="100%"
               style={{ objectPosition: "center", objectFit: "cover" }}
               src={Defile1}
-              alt=""
+              alt="Defile de mode versace"
             />{" "}
           </div>
           <div className=" d-flex w-100 flex-column">

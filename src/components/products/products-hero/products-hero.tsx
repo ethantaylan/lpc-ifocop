@@ -8,7 +8,7 @@ export const ProductsHero = () => {
           style={{ objectFit: "cover", opacity: 1, }}
           width={"100%"}
           height={300}
-          alt=""
+          alt="Hero"
         />
       </div>
   );

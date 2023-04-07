@@ -12,7 +12,7 @@ export const BookingBanner = () => {
         height={300}
         width="100%"
         src={BookingBannerImg}
-        alt=""
+        alt="Booking banner image"
       />
     </div>
   );

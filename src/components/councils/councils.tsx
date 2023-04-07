@@ -18,7 +18,7 @@ export const Councils: React.FC = () => {
             width="100%"
             style={{ objectPosition: "center", objectFit: "cover" }}
             src={Councils2}
-            alt=""
+            alt="Image mannequin vetement printemps"
           />{" "}
         </div>
         <div className=" d-flex w-100 flex-column">
