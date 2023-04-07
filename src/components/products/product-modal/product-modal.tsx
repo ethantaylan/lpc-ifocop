@@ -52,7 +52,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({
   onClose,
   img,
   price,
-  onClick
+  onClick,
 }) => {
   const theme = useGlobalContext();
   const matches = useMatches();

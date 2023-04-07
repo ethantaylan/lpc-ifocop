@@ -4,15 +4,16 @@ import { menus } from "../../App";
 import { SubMenu } from "./sub-menu/sub-menu";
 import { Input } from "@mui/material";
 import React from "react";
-import { useGlobalContext, useGlobalDispatch } from "../../context/context";
 import { useMatches } from "../../hooks/use-matches";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+import { Breadcrumb } from "../breadcrumb/breadcrumb";
 
 export const Header: React.FC = () => {
   const matches = useMatches();
 
   const [searchBar, setSearchBar] = React.useState<boolean>(false);
   const [menu, showMenu] = React.useState<boolean>(false);
+  const [index, setIndex] = React.useState<number>(0);
 
   const navigate = useNavigate();
 
@@ -135,6 +136,25 @@ export const Header: React.FC = () => {
               <>
                 <BsHeart onClick={() => navigate("/avis")} />
                 <span className="ms-2">Laissez un avis</span>
+              </>
+            }
+            thirdLabel={
+              <>
+                <div className="d-flex">
+                  <span
+                    className={index === 0 ? "bold" : ""}
+                    onClick={() => setIndex(0)}
+                  >
+                    FR
+                  </span>
+                  <span className="mx-2 d-flex">|</span>
+                  <span
+                    className={index === 1 ? "bold" : ""}
+                    onClick={() => setIndex(1)}
+                  >
+                    ENG
+                  </span>
+                </div>
               </>
             }
           />

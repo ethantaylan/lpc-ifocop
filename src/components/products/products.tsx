@@ -5,9 +5,9 @@ import { ProductModal } from "./product-modal/product-modal";
 import { FilterLabels } from "./products-labels/products-labels";
 import { Cart } from "../cart/cart";
 import { useMatches } from "../../hooks/use-matches";
-import { Button } from "@mui/material";
 import { BsFillCartFill } from "react-icons/bs";
 import { useGlobalContext } from "../../context/context";
+import Swal from "sweetalert2";
 
 export const Products: React.FC = () => {
   const [products, setProducts] = React.useState([]);
@@ -40,7 +40,21 @@ export const Products: React.FC = () => {
   }, []);
 
   const addToCartHandler = (product: any) => {
-    setCart([...cart, product]);
+    setCart([
+      ...cart,
+      {
+        title: product.title,
+        description: product.description,
+        price: product.price,
+        image: product.image,
+        size: product.size,
+      },
+    ]);
+    Swal.fire(
+      "",
+      `<strong>${product.title}</strong> a été ajouté au panier`,
+      "success"
+    );
   };
 
   const removeFromCartHandler = () => {
@@ -56,7 +70,7 @@ export const Products: React.FC = () => {
         onClose={() => setIsCartOpen(false)}
         showCanvas={isCartOpen}
         products={cart}
-        onAddToCart={() => addToCartHandler(productTitle)}
+        onAddToCart={(product) => addToCartHandler(product)}
       />
       <ProductModal
         onClose={() => setOpenModal(false)}
@@ -66,7 +80,13 @@ export const Products: React.FC = () => {
         img={productImg}
         price={productPrice}
         onClick={() => {
-          addToCartHandler(productTitle);
+          addToCartHandler({
+            title: productTitle,
+            description: productDescription,
+            price: productPrice,
+            image: productImg,
+          });
+          setOpenModal(false);
         }}
       />
 
@@ -80,9 +100,10 @@ export const Products: React.FC = () => {
             borderRadius: matches ? 0 : 30,
             width: matches ? "100%" : 120,
             border: matches ? 0 : `1px solid ${theme.primary}`,
-            boxShadow: matches ? "0px -5px 30px rgba(0,0,0, 0.3)" : '0',
+            boxShadow: matches ? "0px -5px 30px rgba(0,0,0, 0.3)" : "0",
+            padding: matches ? "20px" : "7px 20px",
           }}
-          className="d-flex cursor-pointer justify-content-center py-2"
+          className="d-flex cursor-pointer justify-content-center"
         >
           <h5
             className="m-0 position-relative primary d-flex align-items-center"
@@ -102,7 +123,7 @@ export const Products: React.FC = () => {
                 top: 0,
               }}
             >
-              {cart.length}
+              {cart?.length}
             </span>
           </h5>
         </div>

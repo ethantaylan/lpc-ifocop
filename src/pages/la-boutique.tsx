@@ -35,7 +35,6 @@ export const LaBoutique: React.FC = () => {
   return (
     <div className="w-100">
       <p>
-        {" "}
         <Title h1 className="text-center primary" title="La boutique" />
       </p>
       <video
@@ -43,7 +42,7 @@ export const LaBoutique: React.FC = () => {
         className="w-100 position-relative"
         autoPlay={true}
         loop={true}
-        style={{ objectFit: "cover", borderRadius: 0 }}
+        style={{ objectFit: "cover", borderRadius: 0, pointerEvents: "none" }}
       >
         <source src={Video1} />
       </video>
