@@ -37,11 +37,13 @@ export const Header: React.FC = () => {
 
         {!matches && (
           <ul className="navbar-nav d-flex flex-row mr-auto">
-            <SubMenu
-              firstLabel="+331 23 45 67 89"
-              secondLabel="À propos"
-              thirdLabel="Aide"
-            />
+            <li>
+              <SubMenu
+                firstLabel="+331 23 45 67 89"
+                secondLabel="À propos"
+                thirdLabel="Aide"
+              />
+            </li>
           </ul>
         )}
 

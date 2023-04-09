@@ -41,6 +41,7 @@ export const PaymentSection = () => {
         </ul>
         <div className={`d-flex mt-5 justify-content-center align-items-end`}>
           <img
+            alt="Informations de paiements"
             width={matches ? 320 : 550}
             style={{ objectFit: "contain" }}
             src={PaymentOptionsImg}
