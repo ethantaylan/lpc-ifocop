@@ -25,9 +25,9 @@ export default function BasicSelect() {
   return (
     <Box sx={{ minWidth: 120 }}>
       <FormControl className="my-3" fullWidth>
-        <InputLabel id="demo-simple-select-label">Coach</InputLabel>
+        <InputLabel id="demo-simple-select-label-1">Coach</InputLabel>
         <Select
-          labelId="demo-simple-select-label"
+          labelId="demo-simple-select-label-1"
           id="demo-simple-select"
           value={coach}
           label="Coach"
@@ -39,9 +39,9 @@ export default function BasicSelect() {
         </Select>
       </FormControl>
       <FormControl className="my-3" fullWidth>
-        <InputLabel id="demo-simple-select-label">Boutique</InputLabel>
+        <InputLabel id="demo-simple-select-label-2">Boutique</InputLabel>
         <Select
-          labelId="demo-simple-select-label"
+          labelId="demo-simple-select-label-2"
           id="demo-simple-select"
           value={city}
           label="Ville"
