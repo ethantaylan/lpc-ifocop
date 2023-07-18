@@ -46,6 +46,9 @@ export class AddressControllerBase {
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
+  @swagger.ApiBody({
+    type: AddressCreateInput,
+  })
   async create(@common.Body() data: AddressCreateInput): Promise<Address> {
     return await this.service.create({
       data: {
@@ -167,6 +170,9 @@ export class AddressControllerBase {
   })
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
+  })
+  @swagger.ApiBody({
+    type: AddressUpdateInput,
   })
   async update(
     @common.Param() params: AddressWhereUniqueInput,
